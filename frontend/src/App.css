@@ -48,6 +48,7 @@ body::before {
 .hero-section {
   position: relative;
   background: none !important;
+  z-index: 5;
 }
 
 .hero-section::before {
