@@ -142,7 +142,7 @@ export const mockData = {
       ]
     },
     {
-      name: "Menu enfant",
+      name: "👶 Menu enfant",
       items: [
         {
           name: "Hamburger",
