@@ -197,8 +197,8 @@ section:not(.hero-section)::before {
   
   /* Mobile Hero Background Optimization */
   .hero-bg-mobile {
-    background-size: contain !important;
-    background-position: center center !important;
+    background-size: cover !important;
+    background-position: center 40% !important; /* Position slightly higher to show food better */
     background-repeat: no-repeat !important;
     background-color: #1a1a1a; /* Dark fallback background */
   }
