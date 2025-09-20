@@ -162,7 +162,7 @@ const CharlieHome = () => {
           className="absolute inset-0 hero-bg-mobile"
           style={{
             backgroundImage: `url('https://customer-assets.emergentagent.com/job_cuisine-contact-fix/artifacts/43xnu606_ChatGPT%20Image%2020%20sept.%202025%2C%2019_39_51.png')`,
-            filter: 'brightness(1.1) contrast(0.6)'
+            filter: 'brightness(1.1) contrast(0.5)'
           }}
         ></div>
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
