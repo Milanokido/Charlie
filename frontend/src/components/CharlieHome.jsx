@@ -161,10 +161,6 @@ const CharlieHome = () => {
                     Itinéraire
                   </Button>
                 </div>
-                <div className="mt-4">
-                  <Phone className="h-5 w-5 inline mr-2" />
-                  <span>{mockData.info.phone}</span>
-                </div>
               </CardContent>
             </Card>
 
