@@ -55,6 +55,13 @@ body::before {
   display: none;
 }
 
+/* Hero Background Base Styles */
+.hero-bg-mobile {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
 /* Navigation */
 .navbar {
   background: #5A2C2C !important;
