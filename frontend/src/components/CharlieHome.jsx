@@ -62,7 +62,9 @@ const CharlieHome = () => {
         <div className="relative z-10 text-center px-6">
           <h1 className="text-5xl md:text-7xl font-bold mb-4">Charlie Foods – Orsay</h1>
           <p className="text-xl md:text-2xl mb-6">Burgers, Tacos, Sandwichs, Tex-Mex</p>
-          <Badge className="bg-[#E30613] text-white text-lg px-6 py-2 mb-8">Halal</Badge>
+          <div className="bg-[#E30613] text-white text-lg px-6 py-2 mb-8 rounded-full">
+            {mockData.heroSlogan}
+          </div>
           <div className="space-y-4">
             <div className="flex items-center justify-center space-x-2 text-xl">
               <Phone className="h-6 w-6" />
