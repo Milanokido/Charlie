@@ -116,7 +116,7 @@ export const mockData = {
       ]
     },
     {
-      name: "Nos Salades",
+      name: "🥗 Nos Salades",
       items: [
         {
           name: "César",
