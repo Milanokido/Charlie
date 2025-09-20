@@ -29,7 +29,7 @@ const CharlieHome = () => {
             <img 
               src="https://customer-assets.emergentagent.com/job_5d643aa7-5a0c-4303-886e-62e413d13822/artifacts/z8hi3xjb_WhatsApp%20Image%202025-09-16%20at%2020.09.09.jpeg" 
               alt="Charlie Foods Logo" 
-              className="h-10 w-10 rounded-full"
+              className="h-12 w-12 rounded-full"
             />
             <span className="font-bold text-xl">Charlie Foods</span>
           </div>
