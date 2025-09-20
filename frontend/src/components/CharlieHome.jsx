@@ -75,7 +75,7 @@ const CharlieHome = () => {
   };
 
   return (
-    <div className="charlie-site">
+    <div className="charlie-site overflow-x-hidden">
       {/* Navbar */}
       <nav className="navbar sticky top-0 z-50 bg-[#5A2C2C] text-white px-4 py-4">
         <div className="container mx-auto flex justify-between items-center">
