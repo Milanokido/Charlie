@@ -294,7 +294,15 @@ const CharlieHome = () => {
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <h3 className="font-bold text-lg mb-4">Charlie Foods</h3>
+              <div className="flex items-center space-x-3 mb-4">
+                <img 
+                  src="https://customer-assets.emergentagent.com/job_5d643aa7-5a0c-4303-886e-62e413d13822/artifacts/z8hi3xjb_WhatsApp%20Image%202025-09-16%20at%2020.09.09.jpeg" 
+                  alt="Charlie Foods Logo" 
+                  className="h-12 w-12"
+                  style={{ background: 'transparent' }}
+                />
+                <h3 className="font-bold text-lg">Charlie Foods</h3>
+              </div>
               <p>{mockData.info.address}</p>
               <p>{mockData.info.phone}</p>
             </div>
