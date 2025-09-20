@@ -36,22 +36,23 @@ const CharlieHome = () => {
   };
 
   const getTodayStatus = () => {
-    // Convert to UTC+2 (Paris timezone)
-    const parisTime = new Date(currentTime.getTime() + (2 * 60 * 60 * 1000));
+    // Get current time and convert to UTC+2 (Paris timezone)
+    const now = new Date();
+    const parisTime = new Date(now.getTime() + (2 * 60 * 60 * 1000));
     const currentDay = parisTime.getDay(); // 0 = Sunday, 1 = Monday, etc.
     const currentHour = parisTime.getHours();
     const currentMinute = parisTime.getMinutes();
     const currentTimeInMinutes = currentHour * 60 + currentMinute;
 
-    // Map day numbers to our schedule
+    // Map day numbers to our schedule (UTC+2)
     const daySchedule = {
-      1: { open: [[18*60, 23*60]] }, // Monday
-      2: { open: [[11*60, 15*60], [18*60, 23*60]] }, // Tuesday
-      3: { open: [[11*60, 15*60], [18*60, 23*60]] }, // Wednesday
-      4: { open: [[11*60, 15*60], [18*60, 23*60]] }, // Thursday
-      5: { open: [[11*60, 15*60], [18*60, 23*60]] }, // Friday
-      6: { open: [[11*60, 15*60], [18*60, 23*60]] }, // Saturday
-      0: { open: [[11*60, 15*60], [18*60, 23*60]] }, // Sunday
+      1: { open: [[11*60, 15*60], [18*60, 23*60]] }, // Monday: 11:00–15:00, 18:00–23:00
+      2: { open: [[11*60, 15*60], [18*60, 23*60]] }, // Tuesday: 11:00–15:00, 18:00–23:00
+      3: { open: [[11*60, 15*60], [18*60, 23*60]] }, // Wednesday: 11:00–15:00, 18:00–23:00
+      4: { open: [[11*60, 15*60], [18*60, 23*60]] }, // Thursday: 11:00–15:00, 18:00–23:00
+      5: { open: [[11*60, 15*60], [18*60, 23*60]] }, // Friday: 11:00–15:00, 18:00–23:00
+      6: { open: [[11*60, 15*60], [18*60, 23*60]] }, // Saturday: 11:00–15:00, 18:00–23:00
+      0: { open: [[18*60, 23*60]] }, // Sunday: 18:00–23:00
     };
 
     const todaySchedule = daySchedule[currentDay];
@@ -59,7 +60,7 @@ const CharlieHome = () => {
       currentTimeInMinutes >= start && currentTimeInMinutes < end
     );
     
-    return { currentDay, isOpen };
+    return { currentDay, isOpen, currentTimeInMinutes, parisTime };
   };
 
   const getSchedule = () => {
