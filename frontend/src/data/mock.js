@@ -32,7 +32,7 @@ export const mockData = {
       ]
     },
     {
-      name: "Tacos",
+      name: "🌯 Tacos",
       description: "servi avec frites + boisson 33cl",
       items: [
         {
