@@ -281,16 +281,6 @@ const CharlieHome = () => {
                     <MapPin className="h-6 w-6 mr-2" />
                     Itinéraire
                   </Button>
-                  
-                  <Button 
-                    size="lg" 
-                    variant="outline" 
-                    className="w-full border-[#E30613] text-[#E30613] hover:bg-[#E30613] hover:text-white py-4 text-lg"
-                    onClick={() => window.open(mockData.info.googleMapsLink, '_blank')}
-                  >
-                    <MapPin className="h-6 w-6 mr-2" />
-                    Ouvrir dans Google Maps
-                  </Button>
                 </div>
               </div>
             </CardContent>
