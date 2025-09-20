@@ -56,7 +56,7 @@ const CharlieHome = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://customer-assets.emergentagent.com/job_5d643aa7-5a0c-4303-886e-62e413d13822/artifacts/gyx28xwy_ChatGPT%20Image%2020%20sept.%202025%2C%2015_44_27.png')`,
+            backgroundImage: `url('https://customer-assets.emergentagent.com/job_burgers-orsay/artifacts/0druw6lo_ChatGPT%20Image%2020%20Sept.%202025%2C%2015_44_27.png')`,
           }}
         ></div>
         <div className="absolute inset-0 bg-black bg-opacity-70"></div>
