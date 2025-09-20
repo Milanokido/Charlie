@@ -167,7 +167,7 @@ const CharlieHome = () => {
         <div className="absolute inset-0 bg-black bg-opacity-20"></div>
         <div className="relative z-10 text-center px-4 sm:px-6">
           <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold mb-4 leading-tight">Charlie Foods – Orsay</h1>
-          <p className="text-lg sm:text-xl md:text-2xl mb-6">Burgers, Tacos, Sandwichs, Tex-Mex</p>
+          <p className="text-lg sm:text-xl md:text-2xl mb-6">Burgers, Tacos, Sandwichs Baguette, Tex-Mex</p>
           <div className="bg-[#E30613] text-white text-base sm:text-lg px-4 sm:px-6 py-2 mb-8 rounded-full mx-auto max-w-fit">
             {mockData.heroSlogan}
           </div>
