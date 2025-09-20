@@ -188,6 +188,31 @@ section:not(.hero-section)::before {
     display: none;
   }
   
+  /* Mobile Hero Background Optimization */
+  .hero-section .absolute.inset-0.bg-cover {
+    background-size: contain !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+  }
+  
+  /* Fallback background for better coverage on mobile */
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #E30613 0%, #5A2C2C 100%);
+    opacity: 0.3;
+    z-index: 1;
+  }
+  
+  /* Ensure content stays above backgrounds */
+  .hero-section .relative.z-10 {
+    z-index: 10;
+  }
+  
   /* Fix mobile layout spacing */
   body {
     padding-bottom: 120px; /* Space for fixed mobile button */
