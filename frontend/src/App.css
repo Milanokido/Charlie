@@ -175,14 +175,70 @@ section:not(.hero-section)::before {
 @media (max-width: 768px) {
   .hero-section h1 {
     font-size: 2.5rem;
+    line-height: 1.2;
+    padding: 0 1rem;
   }
   
   .hero-section p {
     font-size: 1.25rem;
+    padding: 0 1rem;
   }
   
   .navbar .hidden {
     display: none;
+  }
+  
+  /* Fix mobile layout spacing */
+  body {
+    padding-bottom: 120px; /* Space for fixed mobile button */
+  }
+  
+  /* Prevent text overflow on mobile */
+  .container {
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Improve mobile card layout */
+  .main-section {
+    margin-bottom: 1rem;
+  }
+  
+  /* Fix mobile navigation */
+  .navbar {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Ensure buttons are touch-friendly */
+  button {
+    min-height: 44px;
+  }
+  
+  /* Fix text alignment issues */
+  .text-center {
+    text-align: center !important;
+  }
+  
+  /* Prevent horizontal scrolling */
+  .overflow-x-hidden {
+    overflow-x: hidden;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-section p {
+    font-size: 1.1rem;
+  }
+  
+  /* Further reduce spacing on very small screens */
+  .hero-section {
+    padding: 1rem 0.5rem;
   }
 }
 
