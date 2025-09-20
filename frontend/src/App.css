@@ -157,6 +157,11 @@ footer::before {
   display: none;
 }
 
+/* Ensure sections have background for better readability */
+section:not(.hero-section) {
+  position: relative;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .hero-section h1 {
