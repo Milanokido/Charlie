@@ -32,22 +32,29 @@ export const mockData = {
       ]
     },
     {
-      name: "🌯 Tacos",
-      description: "servi avec frites + boisson 33cl",
+      name: "🍔 Nos Burgers",
+      description: "servis avec frites + boisson 33cl",
       items: [
-        {
-          name: "Tacos",
-          price: "10,00 €",
-          description: "Viandes: kebab, escalope, tenders, nuggets, steak, poulet pané - Sauce au choix"
-        },
-        {
-          name: "Supplément viande",
-          price: "+1,00 €"
-        },
-        {
-          name: "Supplément cheddar ou raclette",
-          price: "+1,00 €"
-        }
+        { name: "Cheese", price: "7,00 €" },
+        { name: "Fish", price: "7,00 €" },
+        { name: "Chicken", price: "8,00 €" },
+        { name: "Double Cheese", price: "8,00 €" },
+        { name: "Triple Cheese", price: "9,00 €" },
+        { name: "Egg Burger", price: "9,00 €" },
+        { name: "Mix Charlie", price: "9,00 €" }
+      ]
+    },
+    {
+      name: "🥖 Nos Sandwichs Baguette",
+      description: "crudités + sauce au choix",
+      items: [
+        { name: "Omelette", price: "9,00 €" },
+        { name: "Poulet", price: "10,00 €" },
+        { name: "Américain", price: "10,00 €" },
+        { name: "Kebab", price: "10,00 €" },
+        { name: "Tenders", price: "11,00 €" },
+        { name: "Foie", price: "11,00 €" },
+        { name: "Mixte", price: "12,00 €" }
       ]
     },
     {
@@ -77,46 +84,7 @@ export const mockData = {
       ]
     },
     {
-      name: "🍔 Nos Burgers",
-      description: "servis avec frites + boisson 33cl",
-      items: [
-        { name: "Cheese", price: "7,00 €" },
-        { name: "Double Cheese", price: "8,00 €" },
-        { name: "Triple Cheese", price: "9,00 €" },
-        { name: "Egg Burger", price: "9,00 €" },
-        { name: "Fish", price: "7,00 €" },
-        { name: "Chicken", price: "8,00 €" },
-        { name: "Mix Charlie", price: "9,00 €" }
-      ]
-    },
-    {
-      name: "🥖 Nos Sandwichs",
-      description: "crudités + sauce au choix",
-      items: [
-        { name: "Poulet", price: "10,00 €" },
-        { name: "Américain", price: "10,00 €" },
-        { name: "Kebab", price: "10,00 €" },
-        { name: "Omelette", price: "9,00 €" },
-        { name: "Foie", price: "11,00 €" },
-        { name: "Tenders", price: "11,00 €" },
-        { name: "Mixte", price: "12,00 €" }
-      ]
-    },
-    {
-      name: "🌶️ Nos Tex Mex",
-      items: [
-        { name: "Nuggets (6 pcs)", price: "5,90 €" },
-        { name: "Wings (6 pcs)", price: "5,90 €" },
-        { name: "Tenders (3 pcs)", price: "5,90 €" },
-        {
-          name: "Box",
-          price: "29,00 €",
-          description: "20 tenders ou 30 wings + portions de frites + 1 maxi boisson"
-        }
-      ]
-    },
-    {
-      name: "🥗 Nos Salades",
+      name: "🥗 Salades",
       items: [
         {
           name: "César",
@@ -131,7 +99,39 @@ export const mockData = {
       ]
     },
     {
-      name: "🍟 Nos Frites",
+      name: "🌯 Tacos",
+      description: "servi avec frites + boisson 33cl",
+      items: [
+        {
+          name: "Tacos",
+          price: "10,00 €",
+          description: "Viandes: kebab, escalope, tenders, nuggets, steak, poulet pané - Sauce au choix"
+        },
+        {
+          name: "Supplément viande",
+          price: "+1,00 €"
+        },
+        {
+          name: "Supplément cheddar ou raclette",
+          price: "+1,00 €"
+        }
+      ]
+    },
+    {
+      name: "🌶️ Tex Mex",
+      items: [
+        { name: "Nuggets (6 pcs)", price: "5,90 €" },
+        { name: "Wings (4 pcs)", price: "5,90 €" },
+        { name: "Tenders (4 pcs)", price: "5,90 €" },
+        {
+          name: "Box",
+          price: "29,00 €",
+          description: "20 tenders ou 30 wings + portions de frites + 1 maxi boisson"
+        }
+      ]
+    },
+    {
+      name: "🍟 Frites",
       items: [
         { name: "Nature petite", price: "3,00 €" },
         { name: "Nature moyenne", price: "4,00 €" },
@@ -142,7 +142,7 @@ export const mockData = {
       ]
     },
     {
-      name: "👶 Menu enfant",
+      name: "👶 Menu Enfant",
       items: [
         {
           name: "Hamburger",
