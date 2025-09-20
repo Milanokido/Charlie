@@ -293,7 +293,7 @@ const CharlieHome = () => {
                 <img 
                   src="https://customer-assets.emergentagent.com/job_5d643aa7-5a0c-4303-886e-62e413d13822/artifacts/z8hi3xjb_WhatsApp%20Image%202025-09-16%20at%2020.09.09.jpeg" 
                   alt="Charlie Foods Logo" 
-                  className="h-12 w-12"
+                  className="h-12 w-16 object-cover rounded-lg"
                   style={{ background: 'transparent' }}
                 />
                 <h3 className="font-bold text-lg">Charlie Foods</h3>
