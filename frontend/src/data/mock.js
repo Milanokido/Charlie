@@ -157,7 +157,7 @@ export const mockData = {
       ]
     },
     {
-      name: "Desserts",
+      name: "🍰 Desserts",
       items: [
         { name: "Tiramisu", price: "3,00 €" },
         { name: "Tarte au Daim", price: "3,00 €" }
