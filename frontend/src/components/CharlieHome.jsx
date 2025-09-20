@@ -220,18 +220,17 @@ const CharlieHome = () => {
       <section id="apropos" className="py-16 px-6">
         <div className="container mx-auto">
           <h2 className="text-4xl font-bold text-center text-white mb-12">À propos</h2>
-          <Card className="main-section max-w-4xl mx-auto">
-            <CardContent className="text-white p-8">
-              <p className="text-lg leading-relaxed text-center">
-                {mockData.about}
-              </p>
-              <div className="flex items-center justify-center mt-6">
-                <Star className="h-6 w-6 text-[#E30613] mr-2" />
-                <span className="text-[#E30613] font-semibold">Qualité • Rapidité • Halal</span>
-                <Star className="h-6 w-6 text-[#E30613] ml-2" />
-              </div>
-            </CardContent>
-          </Card>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {mockData.about.map((item, index) => (
+              <Card key={index} className="main-section">
+                <CardContent className="text-white p-8 text-center">
+                  <div className="text-4xl mb-4">{item.icon}</div>
+                  <h3 className="text-xl font-semibold text-[#E30613] mb-4">{item.title}</h3>
+                  <p className="text-gray-300 leading-relaxed">{item.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
