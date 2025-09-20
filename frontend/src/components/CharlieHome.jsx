@@ -351,9 +351,9 @@ const CharlieHome = () => {
       </section>
 
       {/* À propos Section */}
-      <section id="apropos" className="py-16 px-6">
+      <section id="apropos" className="py-12 sm:py-16 px-4 sm:px-6">
         <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-center text-white mb-12">À propos</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-center text-white mb-8 sm:mb-12">À propos</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {mockData.about.map((item, index) => (
               <Card key={index} className="main-section">
