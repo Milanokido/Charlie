@@ -225,20 +225,26 @@ const CharlieHome = () => {
               </CardHeader>
               <CardContent className="text-white">
                 <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span>Lundi:</span>
-                    <div className="flex items-center space-x-2">
-                      <span>18h–23h</span>
-                      <Badge className="bg-green-600 text-white text-xs">Ouvert</Badge>
-                    </div>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span>Mar–Dim:</span>
-                    <div className="flex items-center space-x-2">
-                      <span>11h–15h, 18h–23h</span>
-                      <Badge className="bg-green-600 text-white text-xs">Ouvert</Badge>
-                    </div>
-                  </div>
+                  {getSchedule().map((dayInfo) => {
+                    const status = getRestaurantStatus(dayInfo.day);
+                    return (
+                      <div key={dayInfo.day} className="flex justify-between items-center">
+                        <span className="font-medium">{dayInfo.name}:</span>
+                        <div className="flex items-center space-x-2">
+                          <span className="text-sm">{dayInfo.hours}</span>
+                          <Badge 
+                            className={`text-white text-xs ${
+                              status === 'Ouvert' 
+                                ? 'bg-green-600' 
+                                : 'bg-red-600'
+                            }`}
+                          >
+                            {status}
+                          </Badge>
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </CardContent>
             </Card>
