@@ -1,34 +1,218 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+body {
+  font-family: 'Poppins', sans-serif;
+  background-image: url('https://customer-assets.emergentagent.com/job_5d643aa7-5a0c-4303-886e-62e413d13822/artifacts/qachn0tw_ChatGPT%20Image%2020%20sept.%202025%2C%2015_44_16.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #FFFFFF;
+  min-height: 100vh;
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+  pointer-events: none;
 }
 
-.App-link {
-    color: #61dafb;
+.charlie-site {
+  min-height: 100vh;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+/* Navigation */
+.navbar {
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+.navbar button:hover {
+  transform: translateY(-1px);
+  transition: all 0.3s ease;
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  background: none !important;
+}
+
+.hero-section::before {
+  display: none;
+}
+
+/* Main Sections */
+.main-section {
+  background: rgba(0, 0, 0, 0.85) !important;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(229, 6, 19, 0.1);
+  transition: all 0.3s ease;
+}
+
+.main-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+/* Colors */
+.btn-primary, .bg-primary {
+  background-color: #E30613 !important;
+  border-color: #E30613 !important;
+}
+
+.btn-primary:hover, .bg-primary:hover {
+  background-color: #B8050F !important;
+  border-color: #B8050F !important;
+}
+
+.text-accent, .accent {
+  color: #E30613 !important;
+}
+
+.border-accent {
+  border-color: #E30613 !important;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Button Animations */
+button {
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+/* Gallery Hover Effects */
+.gallery-image {
+  transition: all 0.3s ease;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.gallery-image:hover {
+  transform: scale(1.05);
+}
+
+/* Card Animations */
+.card {
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+/* Link Hover Effects */
+a {
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #E30613 !important;
+}
+
+/* Footer */
+footer {
+  background: #5A2C2C !important;
+  position: relative;
+}
+
+footer::before {
+  display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-section p {
+    font-size: 1.25rem;
+  }
+  
+  .navbar .hidden {
+    display: none;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E30613;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B8050F;
+}
+
+/* Text Selection */
+::selection {
+  background: #E30613;
+  color: white;
+}
+
+/* Focus States */
+button:focus, input:focus {
+  outline: 2px solid #E30613;
+  outline-offset: 2px;
+}
+
+/* Loading Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Micro-interactions */
+.interactive {
+  transition: all 0.2s ease;
+}
+
+.interactive:hover {
+  transform: scale(1.02);
 }
