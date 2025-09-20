@@ -165,16 +165,16 @@ const CharlieHome = () => {
           }}
         ></div>
         <div className="absolute inset-0 bg-black bg-opacity-25"></div>
-        <div className="relative z-10 text-center px-6">
-          <h1 className="text-5xl md:text-7xl font-bold mb-4">Charlie Foods – Orsay</h1>
-          <p className="text-xl md:text-2xl mb-6">Burgers, Tacos, Sandwichs, Tex-Mex</p>
-          <div className="bg-[#E30613] text-white text-lg px-6 py-2 mb-8 rounded-full">
+        <div className="relative z-10 text-center px-4 sm:px-6">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold mb-4 leading-tight">Charlie Foods – Orsay</h1>
+          <p className="text-lg sm:text-xl md:text-2xl mb-6">Burgers, Tacos, Sandwichs, Tex-Mex</p>
+          <div className="bg-[#E30613] text-white text-base sm:text-lg px-4 sm:px-6 py-2 mb-8 rounded-full mx-auto max-w-fit">
             {mockData.heroSlogan}
           </div>
           <div className="space-y-4">
-            <div className="flex items-center justify-center space-x-2 text-xl">
-              <Phone className="h-6 w-6" />
-              <span>Appeler maintenant • 09 86 15 17 24</span>
+            <div className="flex items-center justify-center space-x-2 text-lg sm:text-xl">
+              <Phone className="h-5 w-5 sm:h-6 sm:w-6" />
+              <span className="text-center">Appeler maintenant • 09 86 15 17 24</span>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
