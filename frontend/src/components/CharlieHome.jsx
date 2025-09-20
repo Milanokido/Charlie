@@ -126,6 +126,22 @@ const CharlieHome = () => {
       <section id="infos" className="py-16 px-6">
         <div className="container mx-auto">
           <h2 className="text-4xl font-bold text-center text-white mb-12">Informations</h2>
+          
+          {/* Google Maps */}
+          <Card className="main-section mb-8">
+            <CardContent className="p-0">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2627.3!2d2.1896881!3d48.7016253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e679003f5d146f%3A0x2debb7669a89d1a!2sCHARLIE%20FOODS!5e0!3m2!1sfr!2sfr!4v1695220000000!5m2!1sfr!2sfr"
+                width="100%"
+                height="300"
+                style={{ border: 0, borderRadius: '16px' }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </CardContent>
+          </Card>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Card className="main-section">
               <CardHeader>
@@ -136,20 +152,17 @@ const CharlieHome = () => {
               </CardHeader>
               <CardContent className="text-white">
                 <p>{mockData.info.address}</p>
-                <div className="mt-4 space-y-2">
+                <div className="mt-4">
                   <Button 
                     className="w-full bg-[#E30613] hover:bg-[#B8050F]"
-                    onClick={() => window.open(mockData.info.googleMapsLink, '_blank')}
-                  >
-                    Ouvrir dans Google Maps
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    className="w-full border-[#E30613] text-[#E30613] hover:bg-[#E30613] hover:text-white"
                     onClick={() => window.open(mockData.info.directionsLink, '_blank')}
                   >
                     Itinéraire
                   </Button>
+                </div>
+                <div className="mt-4">
+                  <Phone className="h-5 w-5 inline mr-2" />
+                  <span>{mockData.info.phone}</span>
                 </div>
               </CardContent>
             </Card>
@@ -163,25 +176,33 @@ const CharlieHome = () => {
               </CardHeader>
               <CardContent className="text-white">
                 <div className="space-y-2">
-                  <p><strong>Mardi → Dimanche:</strong> 11h–15h et 18h–23h</p>
-                  <p><strong>Lundi:</strong> 18h–23h</p>
-                </div>
-                <div className="mt-4">
-                  <Phone className="h-5 w-5 inline mr-2" />
-                  <span>{mockData.info.phone}</span>
+                  <div className="flex justify-between items-center">
+                    <span>Lundi:</span>
+                    <div className="flex items-center space-x-2">
+                      <span>18h–23h</span>
+                      <Badge className="bg-green-600 text-white text-xs">Ouvert</Badge>
+                    </div>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span>Mar–Dim:</span>
+                    <div className="flex items-center space-x-2">
+                      <span>11h–15h, 18h–23h</span>
+                      <Badge className="bg-green-600 text-white text-xs">Ouvert</Badge>
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
 
             <Card className="main-section">
               <CardHeader>
-                <CardTitle className="text-[#E30613]">Livraison</CardTitle>
+                <CardTitle className="text-[#E30613]">Services</CardTitle>
               </CardHeader>
               <CardContent className="text-white">
                 <div className="space-y-2">
-                  <p>• Minimum de commande 15 €</p>
-                  <p>• Frais de livraison +5,00 €</p>
-                  <p>• À emporter disponible</p>
+                  {mockData.paymentInfo.map((info, index) => (
+                    <p key={index}>{info}</p>
+                  ))}
                 </div>
                 <div className="mt-4">
                   <p className="font-semibold mb-2">Partenaires:</p>
