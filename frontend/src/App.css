@@ -58,6 +58,7 @@ body::before {
 .navbar {
   background: #5A2C2C !important;
   position: relative;
+  z-index: 10;
 }
 
 .navbar::before {
