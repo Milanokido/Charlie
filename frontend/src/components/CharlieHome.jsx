@@ -158,13 +158,10 @@ const CharlieHome = () => {
       {/* Hero Section */}
       <section id="hero" className="hero-section min-h-screen flex items-center justify-center text-white relative">
         <div 
-          className="absolute inset-0"
+          className="absolute inset-0 hero-bg-mobile"
           style={{
             backgroundImage: `url('https://customer-assets.emergentagent.com/job_burgers-orsay/artifacts/1usth42y_ChatGPT%20Image%2020%20sept.%202025%2C%2015_44_27.png')`,
-            filter: 'brightness(1.1) contrast(0.8)',
-            backgroundSize: window.innerWidth <= 768 ? 'contain' : 'cover',
-            backgroundPosition: 'center center',
-            backgroundRepeat: 'no-repeat'
+            filter: 'brightness(1.1) contrast(0.8)'
           }}
         ></div>
         <div className="absolute inset-0 bg-black bg-opacity-25"></div>
