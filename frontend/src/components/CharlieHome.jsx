@@ -29,7 +29,7 @@ const CharlieHome = () => {
     setLightboxImage(null);
   };
 
-  const getRestaurantStatus = (day) => {
+  const getTodayStatus = () => {
     // Convert to UTC+2 (Paris timezone)
     const parisTime = new Date(currentTime.getTime() + (2 * 60 * 60 * 1000));
     const currentDay = parisTime.getDay(); // 0 = Sunday, 1 = Monday, etc.
@@ -39,25 +39,21 @@ const CharlieHome = () => {
 
     // Map day numbers to our schedule
     const daySchedule = {
-      1: { name: 'Lundi', hours: '18h–23h', open: [[18*60, 23*60]] }, // Monday
-      2: { name: 'Mardi', hours: '11h–15h, 18h–23h', open: [[11*60, 15*60], [18*60, 23*60]] }, // Tuesday
-      3: { name: 'Mercredi', hours: '11h–15h, 18h–23h', open: [[11*60, 15*60], [18*60, 23*60]] }, // Wednesday
-      4: { name: 'Jeudi', hours: '11h–15h, 18h–23h', open: [[11*60, 15*60], [18*60, 23*60]] }, // Thursday
-      5: { name: 'Vendredi', hours: '11h–15h, 18h–23h', open: [[11*60, 15*60], [18*60, 23*60]] }, // Friday
-      6: { name: 'Samedi', hours: '11h–15h, 18h–23h', open: [[11*60, 15*60], [18*60, 23*60]] }, // Saturday
-      0: { name: 'Dimanche', hours: '11h–15h, 18h–23h', open: [[11*60, 15*60], [18*60, 23*60]] }, // Sunday
+      1: { open: [[18*60, 23*60]] }, // Monday
+      2: { open: [[11*60, 15*60], [18*60, 23*60]] }, // Tuesday
+      3: { open: [[11*60, 15*60], [18*60, 23*60]] }, // Wednesday
+      4: { open: [[11*60, 15*60], [18*60, 23*60]] }, // Thursday
+      5: { open: [[11*60, 15*60], [18*60, 23*60]] }, // Friday
+      6: { open: [[11*60, 15*60], [18*60, 23*60]] }, // Saturday
+      0: { open: [[11*60, 15*60], [18*60, 23*60]] }, // Sunday
     };
 
-    if (currentDay === day) {
-      // Check if currently open
-      const todaySchedule = daySchedule[day];
-      const isOpen = todaySchedule.open.some(([start, end]) => 
-        currentTimeInMinutes >= start && currentTimeInMinutes < end
-      );
-      return isOpen ? 'Ouvert' : 'Fermé';
-    }
+    const todaySchedule = daySchedule[currentDay];
+    const isOpen = todaySchedule.open.some(([start, end]) => 
+      currentTimeInMinutes >= start && currentTimeInMinutes < end
+    );
     
-    return 'Fermé'; // Not today, so closed
+    return { currentDay, isOpen };
   };
 
   const getSchedule = () => {
