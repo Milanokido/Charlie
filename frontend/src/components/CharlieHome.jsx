@@ -176,16 +176,16 @@ const CharlieHome = () => {
               <Phone className="h-5 w-5 sm:h-6 sm:w-6" />
               <span className="text-center">Appeler maintenant • 09 86 15 17 24</span>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
               <Button 
                 onClick={() => scrollToSection('menu')} 
-                className="bg-[#E30613] hover:bg-[#B8050F] text-white px-8 py-3 text-lg"
+                className="bg-[#E30613] hover:bg-[#B8050F] text-white px-6 sm:px-8 py-3 text-base sm:text-lg w-full sm:w-auto"
               >
                 Voir le menu
               </Button>
               <Button 
                 onClick={handlePhoneCall} 
-                className="bg-[#E30613] hover:bg-[#B8050F] text-white border-[#E30613] px-8 py-3 text-lg font-semibold"
+                className="bg-[#E30613] hover:bg-[#B8050F] text-white border-[#E30613] px-6 sm:px-8 py-3 text-base sm:text-lg font-semibold w-full sm:w-auto"
               >
                 Commander
               </Button>
