@@ -1,7 +1,7 @@
 export const mockData = {
   menuCategories: [
     {
-      name: "Nos Gourmets",
+      name: "🍔✨ Nos Gourmets",
       description: "menus avec frites + boisson 33cl",
       items: [
         {
