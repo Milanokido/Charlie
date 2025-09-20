@@ -402,9 +402,9 @@ const CharlieHome = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#5A2C2C] text-white py-8 px-6">
+      <footer className="bg-[#5A2C2C] text-white py-8 px-4 sm:px-6">
         <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             <div>
               <div className="flex items-center space-x-3 mb-4">
                 <img 
