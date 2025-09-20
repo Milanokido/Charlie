@@ -288,17 +288,6 @@ const CharlieHome = () => {
                           <span className={`font-medium ${isToday ? 'text-[#E30613]' : ''}`}>
                             {dayInfo.name}
                           </span>
-                          {isToday && (
-                            <Badge 
-                              className={`text-white text-xs ml-2 ${
-                                isOpen 
-                                  ? 'bg-green-600' 
-                                  : 'bg-red-600'
-                              }`}
-                            >
-                              {isOpen ? 'Ouvert' : 'Fermé'}
-                            </Badge>
-                          )}
                         </div>
                         <span className="text-sm text-gray-300 sm:text-white">{dayInfo.hours}</span>
                       </div>
