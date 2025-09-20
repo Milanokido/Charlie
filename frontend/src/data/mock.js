@@ -131,7 +131,7 @@ export const mockData = {
       ]
     },
     {
-      name: "Nos Frites",
+      name: "🍟 Nos Frites",
       items: [
         { name: "Nature petite", price: "3,00 €" },
         { name: "Nature moyenne", price: "4,00 €" },
