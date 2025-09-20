@@ -77,17 +77,19 @@ const CharlieHome = () => {
   return (
     <div className="charlie-site">
       {/* Navbar */}
-      <nav className="navbar sticky top-0 z-50 bg-[#5A2C2C] text-white px-6 py-4">
+      <nav className="navbar sticky top-0 z-50 bg-[#5A2C2C] text-white px-4 py-4">
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-3">
             <img 
               src="https://customer-assets.emergentagent.com/job_5d643aa7-5a0c-4303-886e-62e413d13822/artifacts/z8hi3xjb_WhatsApp%20Image%202025-09-16%20at%2020.09.09.jpeg" 
               alt="Charlie Foods Logo" 
-              className="h-14 w-14 rounded-full object-cover"
+              className="h-12 w-12 md:h-14 md:w-14 rounded-full object-cover flex-shrink-0"
               style={{ background: 'transparent' }}
             />
-            <span className="font-bold text-xl">Charlie Foods</span>
+            <span className="font-bold text-lg md:text-xl truncate">Charlie Foods</span>
           </div>
+          
+          {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-6">
             <button onClick={() => scrollToSection('hero')} className="hover:text-[#E30613] transition-colors">Accueil</button>
             <button onClick={() => scrollToSection('menu')} className="hover:text-[#E30613] transition-colors">Menu</button>
@@ -96,13 +98,61 @@ const CharlieHome = () => {
             <button onClick={() => scrollToSection('apropos')} className="hover:text-[#E30613] transition-colors">À propos</button>
             <button onClick={() => scrollToSection('contact')} className="hover:text-[#E30613] transition-colors">Contact</button>
           </div>
+          
+          {/* Desktop Commander Button */}
           <Button 
-            onClick={() => scrollToSection('contact')} 
-            className="bg-[#E30613] hover:bg-[#B8050F] text-white border-[#E30613] font-semibold"
+            onClick={handlePhoneCall} 
+            className="hidden md:flex bg-[#E30613] hover:bg-[#B8050F] text-white border-[#E30613] font-semibold"
           >
             Commander
           </Button>
+          
+          {/* Mobile Menu Button */}
+          <button 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 hover:bg-[#B8050F] rounded-lg transition-colors"
+          >
+            {mobileMenuOpen ? <X className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
+          </button>
         </div>
+        
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 right-0 bg-[#5A2C2C] border-t border-[#B8050F] shadow-lg">
+            <div className="px-4 py-2 space-y-1">
+              <button 
+                onClick={() => scrollToSection('menu')} 
+                className="block w-full text-left px-4 py-3 hover:bg-[#B8050F] hover:text-white transition-colors rounded-lg"
+              >
+                Menu
+              </button>
+              <button 
+                onClick={() => scrollToSection('infos')} 
+                className="block w-full text-left px-4 py-3 hover:bg-[#B8050F] hover:text-white transition-colors rounded-lg"
+              >
+                Infos
+              </button>
+              <button 
+                onClick={() => scrollToSection('galerie')} 
+                className="block w-full text-left px-4 py-3 hover:bg-[#B8050F] hover:text-white transition-colors rounded-lg"
+              >
+                Galerie
+              </button>
+              <button 
+                onClick={() => scrollToSection('apropos')} 
+                className="block w-full text-left px-4 py-3 hover:bg-[#B8050F] hover:text-white transition-colors rounded-lg"
+              >
+                À propos
+              </button>
+              <button 
+                onClick={() => scrollToSection('contact')} 
+                className="block w-full text-left px-4 py-3 hover:bg-[#B8050F] hover:text-white transition-colors rounded-lg"
+              >
+                Contact
+              </button>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
