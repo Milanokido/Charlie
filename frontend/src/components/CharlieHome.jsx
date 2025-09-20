@@ -329,9 +329,9 @@ const CharlieHome = () => {
       </section>
 
       {/* Galerie Section */}
-      <section id="galerie" className="py-16 px-6">
+      <section id="galerie" className="py-12 sm:py-16 px-4 sm:px-6">
         <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-center text-white mb-12">Galerie</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-center text-white mb-8 sm:mb-12">Galerie</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {mockData.gallery.map((image, index) => (
               <div 
