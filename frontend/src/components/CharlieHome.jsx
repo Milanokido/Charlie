@@ -432,22 +432,6 @@ const CharlieHome = () => {
             <Phone className="h-4 w-4" />
             <span>09 86 15 17 24</span>
           </div>
-          <div className="flex items-center space-x-2">
-            {(() => {
-              const { isOpen } = getTodayStatus();
-              return (
-                <Badge 
-                  className={`text-white text-xs ${
-                    isOpen 
-                      ? 'bg-green-600' 
-                      : 'bg-red-600'
-                  }`}
-                >
-                  {isOpen ? 'Ouvert' : 'Fermé'}
-                </Badge>
-              );
-            })()}
-          </div>
         </div>
         <Button 
           onClick={handlePhoneCall} 
