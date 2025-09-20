@@ -51,7 +51,7 @@ export const mockData = {
       ]
     },
     {
-      name: "Assiettes",
+      name: "🍽️ Assiettes",
       description: "servi avec frites + boisson 33cl",
       items: [
         {
