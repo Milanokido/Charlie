@@ -80,8 +80,7 @@ const CharlieHome = () => {
               </Button>
               <Button 
                 onClick={() => scrollToSection('contact')} 
-                variant="outline" 
-                className="border-white text-white hover:bg-white hover:text-black px-8 py-3 text-lg"
+                className="bg-[#E30613] hover:bg-[#B8050F] text-white border-[#E30613] px-8 py-3 text-lg font-semibold"
               >
                 Commander
               </Button>
