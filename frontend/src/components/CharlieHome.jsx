@@ -10,11 +10,11 @@ const CharlieHome = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Update time every minute
+  // Update time every 30 seconds for real-time status
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(new Date());
-    }, 60000);
+    }, 30000);
     return () => clearInterval(timer);
   }, []);
 
