@@ -196,23 +196,23 @@ section:not(.hero-section)::before {
   }
   
   /* Mobile Hero Background Optimization */
-  .hero-section .absolute.inset-0.bg-cover {
+  .hero-bg-mobile {
     background-size: contain !important;
     background-position: center center !important;
     background-repeat: no-repeat !important;
   }
   
-  /* Fallback background for better coverage on mobile */
-  .hero-section::before {
+  /* Add gradient fallback background for areas not covered by contain */
+  .hero-section::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, #E30613 0%, #5A2C2C 100%);
-    opacity: 0.3;
+    background: linear-gradient(135deg, rgba(227, 6, 19, 0.1) 0%, rgba(90, 44, 44, 0.2) 100%);
     z-index: 1;
+    pointer-events: none;
   }
   
   /* Ensure content stays above backgrounds */
