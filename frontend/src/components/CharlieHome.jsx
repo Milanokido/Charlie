@@ -65,13 +65,13 @@ const CharlieHome = () => {
 
   const getSchedule = () => {
     return [
-      { day: 1, name: 'Lundi', hours: '18h–23h' },
+      { day: 1, name: 'Lundi', hours: '11h–15h, 18h–23h' },
       { day: 2, name: 'Mardi', hours: '11h–15h, 18h–23h' },
       { day: 3, name: 'Mercredi', hours: '11h–15h, 18h–23h' },
       { day: 4, name: 'Jeudi', hours: '11h–15h, 18h–23h' },
       { day: 5, name: 'Vendredi', hours: '11h–15h, 18h–23h' },
       { day: 6, name: 'Samedi', hours: '11h–15h, 18h–23h' },
-      { day: 0, name: 'Dimanche', hours: '11h–15h, 18h–23h' },
+      { day: 0, name: 'Dimanche', hours: '18h–23h' },
     ];
   };
 
