@@ -228,9 +228,9 @@ const CharlieHome = () => {
       </section>
 
       {/* Infos Section */}
-      <section id="infos" className="py-16 px-6">
+      <section id="infos" className="py-12 sm:py-16 px-4 sm:px-6">
         <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-center text-white mb-12">Informations</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-center text-white mb-8 sm:mb-12">Informations</h2>
           
           {/* Google Maps */}
           <Card className="main-section mb-8">
