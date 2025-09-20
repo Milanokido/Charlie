@@ -7,6 +7,15 @@ import { mockData } from '../data/mock';
 
 const CharlieHome = () => {
   const [lightboxImage, setLightboxImage] = useState(null);
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  // Update time every minute
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 60000);
+    return () => clearInterval(timer);
+  }, []);
 
   const scrollToSection = (sectionId) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
@@ -18,6 +27,49 @@ const CharlieHome = () => {
 
   const closeLightbox = () => {
     setLightboxImage(null);
+  };
+
+  const getRestaurantStatus = (day) => {
+    // Convert to UTC+2 (Paris timezone)
+    const parisTime = new Date(currentTime.getTime() + (2 * 60 * 60 * 1000));
+    const currentDay = parisTime.getDay(); // 0 = Sunday, 1 = Monday, etc.
+    const currentHour = parisTime.getHours();
+    const currentMinute = parisTime.getMinutes();
+    const currentTimeInMinutes = currentHour * 60 + currentMinute;
+
+    // Map day numbers to our schedule
+    const daySchedule = {
+      1: { name: 'Lundi', hours: '18h–23h', open: [[18*60, 23*60]] }, // Monday
+      2: { name: 'Mardi', hours: '11h–15h, 18h–23h', open: [[11*60, 15*60], [18*60, 23*60]] }, // Tuesday
+      3: { name: 'Mercredi', hours: '11h–15h, 18h–23h', open: [[11*60, 15*60], [18*60, 23*60]] }, // Wednesday
+      4: { name: 'Jeudi', hours: '11h–15h, 18h–23h', open: [[11*60, 15*60], [18*60, 23*60]] }, // Thursday
+      5: { name: 'Vendredi', hours: '11h–15h, 18h–23h', open: [[11*60, 15*60], [18*60, 23*60]] }, // Friday
+      6: { name: 'Samedi', hours: '11h–15h, 18h–23h', open: [[11*60, 15*60], [18*60, 23*60]] }, // Saturday
+      0: { name: 'Dimanche', hours: '11h–15h, 18h–23h', open: [[11*60, 15*60], [18*60, 23*60]] }, // Sunday
+    };
+
+    if (currentDay === day) {
+      // Check if currently open
+      const todaySchedule = daySchedule[day];
+      const isOpen = todaySchedule.open.some(([start, end]) => 
+        currentTimeInMinutes >= start && currentTimeInMinutes < end
+      );
+      return isOpen ? 'Ouvert' : 'Fermé';
+    }
+    
+    return 'Fermé'; // Not today, so closed
+  };
+
+  const getSchedule = () => {
+    return [
+      { day: 1, name: 'Lundi', hours: '18h–23h' },
+      { day: 2, name: 'Mardi', hours: '11h–15h, 18h–23h' },
+      { day: 3, name: 'Mercredi', hours: '11h–15h, 18h–23h' },
+      { day: 4, name: 'Jeudi', hours: '11h–15h, 18h–23h' },
+      { day: 5, name: 'Vendredi', hours: '11h–15h, 18h–23h' },
+      { day: 6, name: 'Samedi', hours: '11h–15h, 18h–23h' },
+      { day: 0, name: 'Dimanche', hours: '11h–15h, 18h–23h' },
+    ];
   };
 
   return (
