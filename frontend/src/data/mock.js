@@ -103,7 +103,7 @@ export const mockData = {
       ]
     },
     {
-      name: "Nos Tex Mex",
+      name: "🌶️ Nos Tex Mex",
       items: [
         { name: "Nuggets (6 pcs)", price: "5,90 €" },
         { name: "Wings (6 pcs)", price: "5,90 €" },
