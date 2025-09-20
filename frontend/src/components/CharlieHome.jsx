@@ -435,6 +435,39 @@ const CharlieHome = () => {
         </div>
       </footer>
 
+      {/* Fixed Mobile Commander Button */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#5A2C2C] border-t border-[#E30613] p-4 shadow-2xl">
+        <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center space-x-2 text-white text-sm">
+            <Phone className="h-4 w-4" />
+            <span>09 86 15 17 24</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            {(() => {
+              const { isOpen } = getTodayStatus();
+              return (
+                <Badge 
+                  className={`text-white text-xs ${
+                    isOpen 
+                      ? 'bg-green-600' 
+                      : 'bg-red-600'
+                  }`}
+                >
+                  {isOpen ? 'Ouvert' : 'Fermé'}
+                </Badge>
+              );
+            })()}
+          </div>
+        </div>
+        <Button 
+          onClick={handlePhoneCall} 
+          className="w-full bg-[#E30613] hover:bg-[#B8050F] text-white py-3 text-lg font-semibold"
+        >
+          <Phone className="h-5 w-5 mr-2" />
+          Commander maintenant
+        </Button>
+      </div>
+
       {/* Lightbox */}
       {lightboxImage && (
         <div 
