@@ -369,9 +369,9 @@ const CharlieHome = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-16 px-6">
+      <section id="contact" className="py-12 sm:py-16 px-4 sm:px-6 mb-32 md:mb-0">
         <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-center text-white mb-12">Contact</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-center text-white mb-8 sm:mb-12">Contact</h2>
           <Card className="main-section max-w-2xl mx-auto">
             <CardContent className="p-8">
               <div className="text-center space-y-6">
