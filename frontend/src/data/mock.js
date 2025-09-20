@@ -77,7 +77,7 @@ export const mockData = {
       ]
     },
     {
-      name: "Nos Burgers",
+      name: "🍔 Nos Burgers",
       description: "servis avec frites + boisson 33cl",
       items: [
         { name: "Cheese", price: "7,00 €" },
