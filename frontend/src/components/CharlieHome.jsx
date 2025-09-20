@@ -421,8 +421,8 @@ const CharlieHome = () => {
             </div>
             <div>
               <h3 className="font-bold text-lg mb-4">Horaires</h3>
-              <p>Mardi → Dimanche: 11h–15h et 18h–23h</p>
-              <p>Lundi: 18h–23h</p>
+              <p>Lundi → Samedi: 11h–15h et 18h–23h</p>
+              <p>Dimanche: 18h–23h</p>
             </div>
             <div>
               <h3 className="font-bold text-lg mb-4">Partenaires</h3>
