@@ -203,5 +203,27 @@ export const mockData = {
       alt: "Sandwich gourmet"
     }
   ],
-  about: "Bienvenue chez Charlie Foods, votre restaurant de cuisine généreuse à Orsay ! Nous sommes fiers de vous proposer des produits frais et de qualité, avec nos spécialités burgers et tacos préparés avec soin par notre équipe locale. Chez Charlie Foods, nous mettons l'accent sur la qualité, la rapidité de service et le respect de la certification Halal pour satisfaire tous nos clients."
+  about: [
+    {
+      icon: "❤️",
+      title: "Cuisine avec Passion",
+      description: "Chaque plat est préparé avec amour et attention aux détails pour votre plus grand plaisir."
+    },
+    {
+      icon: "🥩",
+      title: "Qualité Halal",
+      description: "Tous nos produits respectent les standards halal les plus stricts pour votre tranquillité d'esprit."
+    },
+    {
+      icon: "⚡",
+      title: "Service Rapide",
+      description: "Livraison rapide 7j/7 à Orsay pour vous régaler à domicile."
+    }
+  ],
+  paymentInfo: [
+    "💳 Paiement par carte bancaire",
+    "🍽️ Tickets restaurant acceptés",
+    "🛵 Minimum de livraison : 15 €"
+  ],
+  heroSlogan: "Fraîcheur, rapidité et goût — servis avec le sourire."
 };
