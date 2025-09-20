@@ -56,10 +56,11 @@ const CharlieHome = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: `url('https://customer-assets.emergentagent.com/job_burgers-orsay/artifacts/0druw6lo_ChatGPT%20Image%2020%20Sept.%202025%2C%2015_44_27.png')`,
+            backgroundImage: `url('https://customer-assets.emergentagent.com/job_burgers-orsay/artifacts/1usth42y_ChatGPT%20Image%2020%20sept.%202025%2C%2015_44_27.png')`,
+            filter: 'brightness(0.4)'
           }}
         ></div>
-        <div className="absolute inset-0 bg-black bg-opacity-70"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-80"></div>
         <div className="relative z-10 text-center px-6">
           <h1 className="text-5xl md:text-7xl font-bold mb-4">Charlie Foods – Orsay</h1>
           <p className="text-xl md:text-2xl mb-6">Burgers, Tacos, Sandwichs, Tex-Mex</p>
