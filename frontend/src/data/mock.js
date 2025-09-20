@@ -164,7 +164,7 @@ export const mockData = {
       ]
     },
     {
-      name: "Boissons",
+      name: "🥤 Boissons",
       items: [
         { name: "Canette 33cl", price: "1,50 €" },
         { name: "Eau 50cl", price: "1,50 €" }
