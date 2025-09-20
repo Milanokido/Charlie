@@ -379,7 +379,7 @@ const CharlieHome = () => {
                   <Button 
                     size="lg" 
                     className="w-full bg-[#E30613] hover:bg-[#B8050F] text-white py-4 text-lg"
-                    onClick={() => window.open('tel:0986151724')}
+                    onClick={handlePhoneCall}
                   >
                     <Phone className="h-6 w-6 mr-2" />
                     Appeler maintenant
