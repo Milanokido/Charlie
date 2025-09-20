@@ -90,7 +90,7 @@ export const mockData = {
       ]
     },
     {
-      name: "Nos Sandwichs",
+      name: "🥖 Nos Sandwichs",
       description: "crudités + sauce au choix",
       items: [
         { name: "Poulet", price: "10,00 €" },
