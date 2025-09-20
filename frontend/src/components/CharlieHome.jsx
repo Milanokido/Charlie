@@ -184,7 +184,7 @@ const CharlieHome = () => {
                 Voir le menu
               </Button>
               <Button 
-                onClick={() => scrollToSection('contact')} 
+                onClick={handlePhoneCall} 
                 className="bg-[#E30613] hover:bg-[#B8050F] text-white border-[#E30613] px-8 py-3 text-lg font-semibold"
               >
                 Commander
