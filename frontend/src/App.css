@@ -153,6 +153,7 @@ a:hover {
 footer {
   background: #5A2C2C !important;
   position: relative;
+  z-index: 10;
 }
 
 footer::before {
@@ -162,6 +163,12 @@ footer::before {
 /* Ensure sections have background for better readability */
 section:not(.hero-section) {
   position: relative;
+  z-index: 1;
+}
+
+/* Override background for sections to show the wall */
+section:not(.hero-section)::before {
+  display: none;
 }
 
 /* Responsive Design */
