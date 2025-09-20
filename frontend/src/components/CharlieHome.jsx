@@ -44,7 +44,7 @@ const CharlieHome = () => {
           </div>
           <Button 
             onClick={() => scrollToSection('contact')} 
-            className="bg-[#E30613] hover:bg-[#B8050F] text-white border-[#E30613]"
+            className="bg-[#E30613] hover:bg-[#B8050F] text-white border-[#E30613] font-semibold"
           >
             Commander
           </Button>
