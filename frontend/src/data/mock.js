@@ -279,7 +279,8 @@ export const mockData = {
   paymentInfo: [
     "💳 Paiement par carte bancaire",
     "🍽️ Tickets restaurant acceptés",
-    "🛵 Minimum de livraison : 15 €"
+    "🛵 Minimum de livraison : 15 €",
+    "🚚 Frais de livraison : 5 €"
   ],
   heroSlogan: "Fraîcheur, rapidité et goût — servis avec le sourire."
 };
