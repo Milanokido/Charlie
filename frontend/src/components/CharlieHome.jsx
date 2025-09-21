@@ -206,6 +206,9 @@ const CharlieHome = () => {
                   <CardTitle className="text-[#E30613] text-xl border-b border-[#E30613] pb-2">
                     {category.name}
                   </CardTitle>
+                  {category.description && (
+                    <p className="text-sm text-gray-300 mt-2 italic">{category.description}</p>
+                  )}
                 </CardHeader>
                 <CardContent className="text-white">
                   {category.items.map((item, itemIndex) => (
