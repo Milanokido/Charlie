@@ -33,15 +33,43 @@ export const mockData = {
     },
     {
       name: "🍔 Nos Burgers",
-      description: "servis avec frites + boisson 33cl",
+      description: "Servi avec frites + 1 boisson 33cl",
       items: [
-        { name: "Cheese", price: "7,00 €" },
-        { name: "Fish", price: "7,00 €" },
-        { name: "Chicken", price: "8,00 €" },
-        { name: "Double Cheese", price: "8,00 €" },
-        { name: "Triple Cheese", price: "9,00 €" },
-        { name: "Egg Burger", price: "9,00 €" },
-        { name: "Mix Charlie", price: "9,00 €" }
+        { 
+          name: "Fish", 
+          price: "7,00 €", 
+          description: "Poisson pané, cheddar, sauce fish, salade, tomates, oignons rouges." 
+        },
+        { 
+          name: "Cheese", 
+          price: "7,00 €", 
+          description: "Steak 45g, cheddar, sauce maison, salade, tomates, oignons rouges." 
+        },
+        { 
+          name: "Chicken", 
+          price: "8,00 €", 
+          description: "Poulet pané, cheddar, sauce maison, salade, tomates, oignons rouges." 
+        },
+        { 
+          name: "Double Cheese", 
+          price: "8,00 €", 
+          description: "2 steaks 45g, cheddar, sauce maison, salade, tomates, oignons rouges." 
+        },
+        { 
+          name: "Triple Cheese", 
+          price: "9,00 €", 
+          description: "3 steaks 45g, cheddar, sauce maison, salade, tomates, oignons rouges." 
+        },
+        { 
+          name: "Egg Burger", 
+          price: "9,00 €", 
+          description: "2 steaks 45g, œuf, cheddar, sauce Biggy, salade, tomates, oignons rouges." 
+        },
+        { 
+          name: "Mix Charlie", 
+          price: "9,00 €", 
+          description: "Steak 45g, filet pané, cheddar, sauce maison, salade, tomates, oignons rouges." 
+        }
       ]
     },
     {
