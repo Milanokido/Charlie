@@ -156,12 +156,12 @@ export const mockData = {
     },
     {
       name: "🌯 Tacos",
-      description: "servi avec frites + boisson 33cl",
+      description: "Servi avec frites + 1 boisson 33cl • Sauces au choix : Mayo, Ketchup, Harissa, Samouraï, Algérienne, Biggy, Blanche, Poivre, Chilli, Barbecue",
       items: [
         {
           name: "Tacos",
           price: "10,00 €",
-          description: "Viandes: kebab, escalope, tenders, nuggets, steak, poulet pané - Sauce au choix"
+          description: "Viandes: kebab, escalope, tenders, nuggets, steak, poulet pané, cordon bleu"
         },
         {
           name: "Supplément viande",
@@ -170,6 +170,21 @@ export const mockData = {
         {
           name: "Supplément cheddar ou raclette",
           price: "+1,00 €"
+        }
+      ]
+    },
+    {
+      name: "👶 Menu Enfant",
+      items: [
+        {
+          name: "Hamburger",
+          price: "7,50 €",
+          description: "1 cheese + frites + 1 Capri Sun + 1 compote"
+        },
+        {
+          name: "Nuggets",
+          price: "7,50 €",
+          description: "5 nuggets + frites + 1 Capri Sun + 1 compote"
         }
       ]
     },
