@@ -82,7 +82,7 @@ const CharlieHome = () => {
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-3">
             <img 
-              src="https://customer-assets.emergentagent.com/job_5d643aa7-5a0c-4303-886e-62e413d13822/artifacts/z8hi3xjb_WhatsApp%20Image%202025-09-16%20at%2020.09.09.jpeg" 
+              src="https://customer-assets.emergentagent.com/job_de93eba8-68aa-47c4-8a98-1f57832425cc/artifacts/9ol12hyk_image.png" 
               alt="Charlie Foods Logo" 
               className="h-12 w-12 md:h-14 md:w-14 rounded-full object-cover flex-shrink-0"
               style={{ background: 'transparent' }}
