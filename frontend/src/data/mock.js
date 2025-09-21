@@ -196,7 +196,7 @@ export const mockData = {
         { name: "Tenders (4 pcs)", price: "5,90 €" },
         {
           name: "Box",
-          price: "29,00 €",
+          price: "29,90 €",
           description: "20 tenders ou 30 wings + portions de frites + 1 maxi boisson"
         }
       ]
