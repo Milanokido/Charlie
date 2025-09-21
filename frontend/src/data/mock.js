@@ -213,21 +213,6 @@ export const mockData = {
       ]
     },
     {
-      name: "👶 Menu Enfant",
-      items: [
-        {
-          name: "Hamburger",
-          price: "7,50 €",
-          description: "1 cheese + frites + 1 Capri Sun + 1 compote"
-        },
-        {
-          name: "Nuggets",
-          price: "7,50 €",
-          description: "5 nuggets + frites + 1 Capri Sun + 1 compote"
-        }
-      ]
-    },
-    {
       name: "🍰 Desserts",
       items: [
         { name: "Tiramisu", price: "3,00 €" },
