@@ -398,9 +398,9 @@ const CharlieHome = () => {
             <div>
               <div className="flex items-center space-x-3 mb-4">
                 <img 
-                  src="https://customer-assets.emergentagent.com/job_5d643aa7-5a0c-4303-886e-62e413d13822/artifacts/z8hi3xjb_WhatsApp%20Image%202025-09-16%20at%2020.09.09.jpeg" 
+                  src="https://customer-assets.emergentagent.com/job_de93eba8-68aa-47c4-8a98-1f57832425cc/artifacts/9ol12hyk_image.png" 
                   alt="Charlie Foods Logo" 
-                  className="h-12 w-16 object-cover rounded-lg"
+                  className="h-12 w-12 object-cover rounded-full"
                   style={{ background: 'transparent' }}
                 />
                 <h3 className="font-bold text-lg">Charlie Foods</h3>
