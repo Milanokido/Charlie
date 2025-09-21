@@ -278,21 +278,34 @@ const CharlieHome = () => {
               </CardHeader>
               <CardContent className="text-white">
                 <div className="space-y-3">
-                  {getSchedule().map((dayInfo) => {
-                    const { currentDay, isOpen } = getTodayStatus();
-                    const isToday = currentDay === dayInfo.day;
-                    
-                    return (
-                      <div key={dayInfo.day} className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-2">
-                        <div className="flex items-center justify-between">
-                          <span className={`font-medium ${isToday ? 'text-[#E30613]' : ''}`}>
-                            {dayInfo.name}
-                          </span>
-                        </div>
-                        <span className="text-sm text-gray-300 sm:text-white">{dayInfo.hours}</span>
-                      </div>
-                    );
-                  })}
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-2">
+                    <span className="font-medium">Lundi</span>
+                    <span className="text-sm text-gray-300 sm:text-white">11h–15h, 18h–23h</span>
+                  </div>
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-2">
+                    <span className="font-medium">Mardi</span>
+                    <span className="text-sm text-gray-300 sm:text-white">11h–15h, 18h–23h</span>
+                  </div>
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-2">
+                    <span className="font-medium">Mercredi</span>
+                    <span className="text-sm text-gray-300 sm:text-white">11h–15h, 18h–23h</span>
+                  </div>
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-2">
+                    <span className="font-medium">Jeudi</span>
+                    <span className="text-sm text-gray-300 sm:text-white">11h–15h, 18h–23h</span>
+                  </div>
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-2">
+                    <span className="font-medium">Vendredi</span>
+                    <span className="text-sm text-gray-300 sm:text-white">11h–15h, 18h–23h</span>
+                  </div>
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-2">
+                    <span className="font-medium">Samedi</span>
+                    <span className="text-sm text-gray-300 sm:text-white">11h–15h, 18h–23h</span>
+                  </div>
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-2">
+                    <span className="font-medium">Dimanche</span>
+                    <span className="text-sm text-gray-300 sm:text-white">18h–23h</span>
+                  </div>
                 </div>
               </CardContent>
             </Card>
