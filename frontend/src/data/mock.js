@@ -235,28 +235,28 @@ export const mockData = {
   },
   gallery: [
     {
-      src: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzR8MHwxfHNlYXJjaHwxfHxidXJnZXJ8ZW58MHx8fHwxNzU4Mzc2MDc5fDA&ixlib=rb-4.1.0&q=85",
+      src: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzh8MHwxfHNlYXJjaHwxfHxidXJnZXJ8ZW58MHx8fHwxNzU4MzcwMDQ0fDA&ixlib=rb-4.1.0&q=85",
       alt: "Burger délicieux"
     },
     {
-      src: "https://images.unsplash.com/photo-1550547660-d9450f859349?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzR8MHwxfHNlYXJjaHwzfHxidXJnZXJ8ZW58MHx8fHwxNzU4Mzc2MDc5fDA&ixlib=rb-4.1.0&q=85",
-      alt: "Burger appétissant"
+      src: "https://images.unsplash.com/photo-1509722747041-616f39b57569?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHwxfHxiYWd1ZXR0ZSUyMHNhbmR3aWNofGVufDB8fHx8MTc1ODQ1Mzk0Mnww&ixlib=rb-4.1.0&q=85",
+      alt: "Sandwich Baguette"
     },
     {
-      src: "https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwyfHx0YWNvc3xlbnwwfHx8fDE3NTgzNzYwODR8MA&ixlib=rb-4.1.0&q=85",
+      src: "https://images.unsplash.com/photo-1504544750208-dc0358e63f7f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHwzfHx0YWNvc3xlbnwwfHx8fDE3NTgzNDk5NDF8MA&ixlib=rb-4.1.0&q=85",
       alt: "Tacos savoureux"
     },
     {
-      src: "https://images.unsplash.com/photo-1504544750208-dc0358e63f7f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NjZ8MHwxfHNlYXJjaHwzfHx0YWNvc3xlbnwwfHx8fDE3NTgzNzYwODR8MA&ixlib=rb-4.1.0&q=85",
-      alt: "Tacos variés"
+      src: "https://customer-assets.emergentagent.com/job_de93eba8-68aa-47c4-8a98-1f57832425cc/artifacts/i9ft8glx_image.png",
+      alt: "Ojja tunisienne"
     },
     {
-      src: "https://images.unsplash.com/photo-1553909489-cd47e0907980?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzV8MHwxfHNlYXJjaHwxfHxzYW5kd2ljaHxlbnwwfHx8fDE3NTgzNzYwODh8MA&ixlib=rb-4.1.0&q=85",
-      alt: "Sandwich frais"
+      src: "https://images.unsplash.com/photo-1595872252167-3e1c785c1fc5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzR8MHwxfHNlYXJjaHwxfHx0ZXgtbWV4fGVufDB8fHx8MTc1ODQ1Mzk1Nnww&ixlib=rb-4.1.0&q=85",
+      alt: "Tex-Mex"
     },
     {
-      src: "https://images.unsplash.com/photo-1509722747041-616f39b57569?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzV8MHwxfHNlYXJjaHwyfHxzYW5kd2ljaHxlbnwwfHx8fDE3NTgzNzYwODh8MA&ixlib=rb-4.1.0&q=85",
-      alt: "Sandwich gourmet"
+      src: "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Njl8MHwxfHNlYXJjaHwxfHx0aXJhbWlzdXxlbnwwfHx8fDE3NTg0NTM5NjF8MA&ixlib=rb-4.1.0&q=85",
+      alt: "Tiramisu"
     }
   ],
   about: [
