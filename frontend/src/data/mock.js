@@ -74,15 +74,43 @@ export const mockData = {
     },
     {
       name: "🥖 Nos Sandwichs Baguette",
-      description: "crudités + sauce au choix",
+      description: "Servi avec frites + 1 boisson 33cl • Sauces au choix : Mayo, Ketchup, Harissa, Samouraï, Algérienne, Biggy, Blanche, Poivre, Chilli, Barbecue",
       items: [
-        { name: "Omelette", price: "9,00 €" },
-        { name: "Poulet", price: "10,00 €" },
-        { name: "Américain", price: "10,00 €" },
-        { name: "Kebab", price: "10,00 €" },
-        { name: "Tenders", price: "11,00 €" },
-        { name: "Foie", price: "11,00 €" },
-        { name: "Mixte", price: "12,00 €" }
+        { 
+          name: "Omelette", 
+          price: "9,00 €", 
+          description: "Demi-baguette, omelette, crudités, cheddar." 
+        },
+        { 
+          name: "Poulet", 
+          price: "10,00 €", 
+          description: "Demi-baguette, émincé de poulet, crudités, cheddar, œuf." 
+        },
+        { 
+          name: "American", 
+          price: "10,00 €", 
+          description: "Demi-baguette, 2 steaks 45g, crudités, cheddar, œuf." 
+        },
+        { 
+          name: "Kebab", 
+          price: "10,00 €", 
+          description: "Demi-baguette, kebab, crudités." 
+        },
+        { 
+          name: "Tenders", 
+          price: "11,00 €", 
+          description: "Demi-baguette, tenders, crudités, cheddar." 
+        },
+        { 
+          name: "Foie", 
+          price: "11,00 €", 
+          description: "Demi-baguette, foie, crudités." 
+        },
+        { 
+          name: "Mixte", 
+          price: "12,00 €", 
+          description: "Demi-baguette, 2 steaks 45g + escalope de poulet, crudités, cheddar, œuf." 
+        }
       ]
     },
     {
