@@ -482,21 +482,41 @@ const CharlieHome = () => {
         </div>
       </footer>
 
-      {/* Fixed Mobile Commander Button */}
+      {/* Fixed Mobile Cart & Commander Button */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#5A2C2C] border-t border-[#E30613] p-4 shadow-2xl">
         <div className="flex items-center justify-between mb-2">
           <div className="flex items-center space-x-2 text-white text-sm">
             <Phone className="h-4 w-4" />
             <span>09 86 15 17 24</span>
           </div>
+          <button
+            onClick={() => setCartModalOpen(true)}
+            className="relative p-2 text-white hover:text-[#E30613] transition-colors"
+          >
+            <ShoppingCart className="h-6 w-6" />
+            {getItemCount() > 0 && (
+              <span className="absolute -top-1 -right-1 bg-[#E30613] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                {getItemCount()}
+              </span>
+            )}
+          </button>
         </div>
-        <Button 
-          onClick={handlePhoneCall} 
-          className="w-full bg-[#E30613] hover:bg-[#B8050F] text-white py-3 text-lg font-semibold"
-        >
-          <Phone className="h-5 w-5 mr-2" />
-          Commander maintenant
-        </Button>
+        <div className="grid grid-cols-2 gap-2">
+          <Button 
+            onClick={() => setCartModalOpen(true)} 
+            className="bg-[#E30613] hover:bg-[#B8050F] text-white py-3 text-sm font-semibold"
+          >
+            <ShoppingCart className="h-4 w-4 mr-1" />
+            Panier ({getItemCount()})
+          </Button>
+          <Button 
+            onClick={handlePhoneCall} 
+            className="bg-[#E30613] hover:bg-[#B8050F] text-white py-3 text-sm font-semibold"
+          >
+            <Phone className="h-4 w-4 mr-1" />
+            Appeler
+          </Button>
+        </div>
       </div>
 
       {/* Cart Modal */}
