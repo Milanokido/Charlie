@@ -248,7 +248,20 @@ const CharlieHome = () => {
                             <p className="text-sm text-gray-300 mt-1">{item.description}</p>
                           )}
                         </div>
-                        <span className="text-[#E30613] font-bold ml-4">{item.price}</span>
+                        <div className="flex items-center space-x-2 ml-4">
+                          <span className="text-[#E30613] font-bold">{item.price}</span>
+                          {/* Masquer le bouton pour les suppléments et les boissons */}
+                          {!item.name.toLowerCase().includes('supplément') && 
+                           !category.name.includes('Boissons') && (
+                            <button
+                              onClick={() => handleAddToCart(item, category.name)}
+                              className="bg-[#E30613] hover:bg-[#B8050F] text-white p-1 rounded-full transition-colors"
+                              title={`Ajouter ${item.name} au panier`}
+                            >
+                              <Plus className="h-4 w-4" />
+                            </button>
+                          )}
+                        </div>
                       </div>
                     </div>
                   ))}
