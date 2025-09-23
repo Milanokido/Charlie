@@ -39,7 +39,16 @@ const CharlieHome = () => {
     window.open('tel:0986151724');
   };
 
-  const getTodayStatus = () => {
+  const handleAddToCart = (item, categoryName) => {
+    const cartItem = {
+      id: `${categoryName}-${item.name}`.replace(/\s+/g, '-').toLowerCase(),
+      name: item.name,
+      price: item.price,
+      description: item.description,
+      category: categoryName
+    };
+    addItem(cartItem);
+  };
     // Get current time and convert to UTC+2 (Paris timezone)
     const now = new Date();
     const parisTime = new Date(now.getTime() + (2 * 60 * 60 * 1000));
