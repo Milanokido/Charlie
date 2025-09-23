@@ -47,25 +47,29 @@ const CartModal = ({ isOpen, onClose }) => {
         orderNumber: Date.now().toString().slice(-6)
       };
 
-      // Ici vous pourrez ajouter l'envoi par email ou Google Sheets
-      console.log('Commande soumise:', orderDetails);
+      // Sauvegarder localement (backup)
+      saveOrderLocally(orderDetails);
       
-      // Simuler l'envoi (remplacez par votre API)
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Envoyer par email
+      const emailResult = await sendOrderByEmail(orderDetails);
       
-      setOrderSubmitted(true);
-      clearCart();
-      
-      // Fermer automatiquement après 3 secondes
-      setTimeout(() => {
-        setOrderSubmitted(false);
-        setShowOrderForm(false);
-        onClose();
-      }, 3000);
+      if (emailResult.success) {
+        setOrderSubmitted(true);
+        clearCart();
+        
+        // Fermer automatiquement après 3 secondes
+        setTimeout(() => {
+          setOrderSubmitted(false);
+          setShowOrderForm(false);
+          onClose();
+        }, 3000);
+      } else {
+        throw new Error(emailResult.message);
+      }
 
     } catch (error) {
       console.error('Erreur lors de l\'envoi de la commande:', error);
-      alert('Erreur lors de l\'envoi de la commande. Veuillez réessayer.');
+      alert('Erreur lors de l\'envoi de la commande. Elle a été sauvegardée localement. Veuillez appeler le restaurant.');
     } finally {
       setIsSubmitting(false);
     }
