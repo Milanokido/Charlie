@@ -63,8 +63,8 @@ const CartModal = ({ isOpen, onClose }) => {
       }, 3000);
 
     } catch (error) {
-      console.error('Erreur lors de l\\'envoi de la commande:', error);
-      alert('Erreur lors de l\\'envoi de la commande. Veuillez réessayer.');
+      console.error('Erreur lors de l\'envoi de la commande:', error);
+      alert('Erreur lors de l\'envoi de la commande. Veuillez réessayer.');
     } finally {
       setIsSubmitting(false);
     }
