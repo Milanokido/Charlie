@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { X, Plus, Minus, ShoppingCart, Trash2 } from 'lucide-react';
 import { Button } from './ui/button';
 import { useCart } from './CartContext';
+import { sendOrderByEmail, saveOrderLocally } from '../services/emailService';
 
 const CartModal = ({ isOpen, onClose }) => {
   const { items, total, updateQuantity, removeItem, clearCart } = useCart();
