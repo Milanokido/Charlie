@@ -49,6 +49,8 @@ const CharlieHome = () => {
     };
     addItem(cartItem);
   };
+
+  const getTodayStatus = () => {
     // Get current time and convert to UTC+2 (Paris timezone)
     const now = new Date();
     const parisTime = new Date(now.getTime() + (2 * 60 * 60 * 1000));
