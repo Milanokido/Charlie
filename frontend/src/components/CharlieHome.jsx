@@ -478,6 +478,12 @@ const CharlieHome = () => {
           </div>
           <div className="text-center mt-8 pt-8 border-t border-gray-600">
             <p>&copy; 2025 Charlie Foods. Tous droits réservés.</p>
+            <button 
+              onClick={() => window.location.href = '/admin-orders'}
+              className="text-xs text-gray-500 hover:text-white mt-2 underline"
+            >
+              Admin
+            </button>
           </div>
         </div>
       </footer>
