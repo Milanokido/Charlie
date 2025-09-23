@@ -499,6 +499,12 @@ const CharlieHome = () => {
         </Button>
       </div>
 
+      {/* Cart Modal */}
+      <CartModal 
+        isOpen={cartModalOpen} 
+        onClose={() => setCartModalOpen(false)} 
+      />
+
       {/* Lightbox */}
       {lightboxImage && (
         <div 
