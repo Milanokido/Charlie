@@ -250,9 +250,8 @@ const CharlieHome = () => {
                         </div>
                         <div className="flex items-center space-x-2 ml-4">
                           <span className="text-[#E30613] font-bold">{item.price}</span>
-                          {/* Masquer le bouton pour les suppléments et les boissons */}
-                          {!item.name.toLowerCase().includes('supplément') && 
-                           !category.name.includes('Boissons') && (
+                          {/* Afficher le bouton pour TOUTES les catégories sauf suppléments */}
+                          {!item.name.toLowerCase().includes('supplément') && (
                             <button
                               onClick={() => handleAddToCart(item, category.name)}
                               className="bg-[#E30613] hover:bg-[#B8050F] text-white p-1 rounded-full transition-colors"
