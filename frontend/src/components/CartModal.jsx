@@ -91,7 +91,7 @@ const CartModal = ({ isOpen, onClose }) => {
     setIsSubmitting(true);
 
     try {
-      // Préparer les données pour Google Sheets
+      // Préparer les données pour Google Sheets avec types corrects
       const orderDetails = {
         token: "MOS123",
         typeCommande: orderType,
@@ -103,25 +103,26 @@ const CartModal = ({ isOpen, onClose }) => {
           id: item.id,
           name: item.name,
           qty: item.quantity,
-          price: item.price,
-          description: item.description || ''
+          price: parseFloat(item.price.replace(',', '.').replace(' €', '')) // Convertir en nombre
         })),
-        total: total.toFixed(2),
+        total: parseFloat(total.toFixed(2)), // Nombre, pas string
+        fraisLivraison: deliveryFee,
+        totalTTC: parseFloat(totalWithDelivery.toFixed(2)),
         timestamp: new Date().toISOString()
       };
 
-      // Envoi vers Google Sheets
+      console.log('📊 Données envoyées à Google Sheets:', orderDetails);
+
+      // Envoi vers Google Sheets avec headers corrects
       const response = await fetch('https://script.google.com/macros/s/AKfycbxGxmlIrWnB176ZM80q-VC_e5ktoq3yGY7QoH_5lbCcXocbHvuBByG9L-NOT1-S0HMM/exec', {
         method: 'POST',
-        mode: 'no-cors', // Important pour Google Apps Script
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(orderDetails)
       });
 
-      // Avec no-cors, on ne peut pas lire la réponse, mais on assume que ça marche
-      console.log('Commande envoyée vers Google Sheets:', orderDetails);
+      console.log('📤 Réponse Google Sheets:', response);
       
       setOrderSubmitted(true);
       clearCart();
