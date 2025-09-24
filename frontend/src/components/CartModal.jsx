@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { X, Plus, Minus, ShoppingCart, Trash2 } from 'lucide-react';
 import { Button } from './ui/button';
 import { useCart } from './CartContext';
-import { sendOrderByEmail, saveOrderLocally } from '../services/emailService';
 
 const CartModal = ({ isOpen, onClose }) => {
   const { items, total, updateQuantity, removeItem, clearCart } = useCart();
   const [showOrderForm, setShowOrderForm] = useState(false);
+  const [orderType, setOrderType] = useState(''); // 'livraison', 'emporter', 'sur-place'
   const [orderData, setOrderData] = useState({
     name: '',
     phone: '',
@@ -15,8 +15,13 @@ const CartModal = ({ isOpen, onClose }) => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderSubmitted, setOrderSubmitted] = useState(false);
+  const [errors, setErrors] = useState({});
 
   if (!isOpen) return null;
+
+  // Calcul du total avec frais de livraison
+  const deliveryFee = orderType === 'livraison' ? 5 : 0;
+  const totalWithDelivery = parseFloat(total) + deliveryFee;
 
   const handleQuantityChange = (itemId, newQuantity) => {
     if (newQuantity <= 0) {
@@ -27,68 +32,145 @@ const CartModal = ({ isOpen, onClose }) => {
   };
 
   const handleInputChange = (e) => {
+    const { name, value } = e.target;
     setOrderData({
       ...orderData,
-      [e.target.name]: e.target.value
+      [name]: value
     });
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors({
+        ...errors,
+        [name]: ''
+      });
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    // Nom obligatoire
+    if (!orderData.name.trim()) {
+      newErrors.name = 'Le nom est obligatoire';
+    }
+
+    // Téléphone valide français
+    const phonePattern = /^(06|07)[0-9]{8}$/;
+    if (!orderData.phone.trim()) {
+      newErrors.phone = 'Le téléphone est obligatoire';
+    } else if (!phonePattern.test(orderData.phone.replace(/\s/g, ''))) {
+      newErrors.phone = 'Format invalide (ex: 06XXXXXXXX)';
+    }
+
+    // Adresse obligatoire pour livraison
+    if (orderType === 'livraison' && !orderData.address.trim()) {
+      newErrors.address = 'L\'adresse est obligatoire pour la livraison';
+    }
+
+    // Type de commande obligatoire
+    if (!orderType) {
+      newErrors.orderType = 'Veuillez choisir un type de commande';
+    }
+
+    // Minimum de commande pour livraison
+    if (orderType === 'livraison' && total < 15) {
+      newErrors.minimum = `Minimum 15€ pour la livraison (actuellement ${total.toFixed(2)}€)`;
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmitOrder = async (e) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
-      // Préparer les données de commande
+      // Préparer les données pour Google Sheets
       const orderDetails = {
-        items: items,
+        token: "MOS123",
+        typeCommande: orderType,
+        nom: orderData.name,
+        telephone: orderData.phone,
+        adresse: orderType === 'livraison' ? orderData.address : '',
+        commentaire: orderData.comment || '',
+        panier: items.map(item => ({
+          id: item.id,
+          name: item.name,
+          qty: item.quantity,
+          price: item.price,
+          description: item.description || ''
+        })),
         total: total.toFixed(2),
-        customer: orderData,
-        timestamp: new Date().toLocaleString('fr-FR'),
-        orderNumber: Date.now().toString().slice(-6)
+        timestamp: new Date().toISOString()
       };
 
-      // Sauvegarder localement (backup)
-      saveOrderLocally(orderDetails);
+      // Envoi vers Google Sheets
+      const response = await fetch('https://script.google.com/macros/s/AKfycbxGxmlIrWnB176ZM80q-VC_e5ktoq3yGY7QoH_5lbCcXocbHvuBByG9L-NOT1-S0HMM/exec', {
+        method: 'POST',
+        mode: 'no-cors', // Important pour Google Apps Script
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderDetails)
+      });
+
+      // Avec no-cors, on ne peut pas lire la réponse, mais on assume que ça marche
+      console.log('Commande envoyée vers Google Sheets:', orderDetails);
       
-      // Envoyer par email
-      const emailResult = await sendOrderByEmail(orderDetails);
+      setOrderSubmitted(true);
+      clearCart();
       
-      if (emailResult.success) {
-        setOrderSubmitted(true);
-        clearCart();
-        
-        // Fermer automatiquement après 3 secondes
-        setTimeout(() => {
-          setOrderSubmitted(false);
-          setShowOrderForm(false);
-          onClose();
-        }, 3000);
-      } else {
-        throw new Error(emailResult.message);
-      }
+      // Fermer automatiquement après 4 secondes
+      setTimeout(() => {
+        setOrderSubmitted(false);
+        setShowOrderForm(false);
+        setOrderType('');
+        setOrderData({ name: '', phone: '', address: '', comment: '' });
+        onClose();
+      }, 4000);
 
     } catch (error) {
       console.error('Erreur lors de l\'envoi de la commande:', error);
-      alert('Erreur lors de l\'envoi de la commande. Elle a été sauvegardée localement. Veuillez appeler le restaurant.');
+      alert('Erreur lors de l\'envoi de la commande. Veuillez appeler le restaurant au 09 86 15 17 24.');
     } finally {
       setIsSubmitting(false);
     }
   };
 
+  // Message de succès
   if (orderSubmitted) {
     return (
       <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-        <div className="bg-white rounded-lg max-w-md w-full p-6 text-center">
+        <div className="bg-white rounded-lg max-w-md w-full p-8 text-center">
           <div className="text-green-600 text-6xl mb-4">✅</div>
-          <h2 className="text-2xl font-bold text-gray-800 mb-2">Commande envoyée !</h2>
-          <p className="text-gray-600">
-            Votre commande a été transmise au restaurant. 
-            Vous serez contacté pour confirmation.
+          <h2 className="text-2xl font-bold text-gray-800 mb-2">
+            Merci pour votre commande !
+          </h2>
+          <p className="text-gray-600 mb-4">
+            Votre commande a été transmise au restaurant Charlie Foods.
           </p>
+          <div className="bg-[#E30613] text-white p-3 rounded-lg">
+            <p className="font-medium">Vous serez contacté sous peu au :</p>
+            <p className="text-lg font-bold">{orderData.phone}</p>
+          </div>
         </div>
       </div>
     );
   }
+
+  const getMenuNote = (categoryName) => {
+    const menuCategories = ['🍔✨ Nos Gourmets', '🍔 Nos Burgers', '🥖 Nos Sandwichs Baguette', '🍽️ Assiettes', '🌯 Tacos'];
+    if (menuCategories.some(cat => categoryName.includes(cat.replace(/🍔✨|🍔|🥖|🍽️|🌯/g, '').trim()))) {
+      return ' (inclus: frites + boisson 33cl)';
+    }
+    return '';
+  };
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
@@ -120,7 +202,12 @@ const CartModal = ({ isOpen, onClose }) => {
                 {items.map((item, index) => (
                   <div key={`${item.id}-${index}`} className="flex items-center justify-between p-3 border rounded-lg">
                     <div className="flex-1">
-                      <h4 className="font-medium text-gray-800">{item.name}</h4>
+                      <h4 className="font-medium text-gray-800">
+                        {item.name}
+                        <span className="text-sm text-gray-500">
+                          {getMenuNote(item.category)}
+                        </span>
+                      </h4>
                       {item.description && (
                         <p className="text-sm text-gray-500 mt-1">{item.description}</p>
                       )}
@@ -135,7 +222,9 @@ const CartModal = ({ isOpen, onClose }) => {
                         <Minus className="h-4 w-4" />
                       </button>
                       
-                      <span className="w-8 text-center font-medium">{item.quantity}</span>
+                      <span className="w-8 text-center font-medium bg-gray-100 rounded px-2 py-1">
+                        {item.quantity}
+                      </span>
                       
                       <button
                         onClick={() => handleQuantityChange(item.id, item.quantity + 1)}
@@ -160,6 +249,43 @@ const CartModal = ({ isOpen, onClose }) => {
           // Formulaire de commande
           <div className="p-4 overflow-y-auto max-h-[calc(90vh-200px)]">
             <form onSubmit={handleSubmitOrder} className="space-y-4">
+              {/* Type de commande */}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Type de commande *
+                </label>
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    { value: 'livraison', label: '🚚 Livraison', extra: '+5€' },
+                    { value: 'emporter', label: '🥡 À emporter', extra: '' },
+                    { value: 'sur-place', label: '🍽️ Sur place', extra: '' }
+                  ].map(option => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => setOrderType(option.value)}
+                      className={`p-3 border rounded-lg text-center transition-colors ${
+                        orderType === option.value 
+                          ? 'border-[#E30613] bg-[#E30613] text-white' 
+                          : 'border-gray-300 hover:border-[#E30613]'
+                      }`}
+                    >
+                      <div className="text-sm font-medium">{option.label}</div>
+                      {option.extra && <div className="text-xs">{option.extra}</div>}
+                    </button>
+                  ))}
+                </div>
+                {errors.orderType && <p className="text-red-500 text-sm mt-1">{errors.orderType}</p>}
+              </div>
+
+              {/* Minimum de commande pour livraison */}
+              {errors.minimum && (
+                <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+                  <p className="text-red-600 text-sm">{errors.minimum}</p>
+                </div>
+              )}
+
+              {/* Informations client */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Nom complet *
@@ -169,38 +295,48 @@ const CartModal = ({ isOpen, onClose }) => {
                   name="name"
                   value={orderData.name}
                   onChange={handleInputChange}
-                  required
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-[#E30613]"
+                  className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:border-[#E30613] ${
+                    errors.name ? 'border-red-500' : 'border-gray-300'
+                  }`}
                 />
+                {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
               </div>
               
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Téléphone *
+                  Téléphone * (06XXXXXXXX ou 07XXXXXXXX)
                 </label>
                 <input
                   type="tel"
                   name="phone"
                   value={orderData.phone}
                   onChange={handleInputChange}
-                  required
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-[#E30613]"
+                  placeholder="06 12 34 56 78"
+                  className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:border-[#E30613] ${
+                    errors.phone ? 'border-red-500' : 'border-gray-300'
+                  }`}
                 />
+                {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
               </div>
               
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Adresse de livraison *
-                </label>
-                <textarea
-                  name="address"
-                  value={orderData.address}
-                  onChange={handleInputChange}
-                  required
-                  rows={3}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-[#E30613]"
-                />
-              </div>
+              {orderType === 'livraison' && (
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Adresse de livraison *
+                  </label>
+                  <textarea
+                    name="address"
+                    value={orderData.address}
+                    onChange={handleInputChange}
+                    rows={3}
+                    placeholder="Adresse complète avec code postal et ville"
+                    className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:border-[#E30613] ${
+                      errors.address ? 'border-red-500' : 'border-gray-300'
+                    }`}
+                  />
+                  {errors.address && <p className="text-red-500 text-sm mt-1">{errors.address}</p>}
+                </div>
+              )}
               
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -217,8 +353,8 @@ const CartModal = ({ isOpen, onClose }) => {
               </div>
 
               {/* Récapitulatif */}
-              <div className="bg-gray-50 p-3 rounded-lg">
-                <h4 className="font-medium text-gray-800 mb-2">Récapitulatif</h4>
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <h4 className="font-medium text-gray-800 mb-3">Récapitulatif de votre commande</h4>
                 {items.map((item, index) => (
                   <div key={index} className="flex justify-between text-sm mb-1">
                     <span>{item.quantity}x {item.name}</span>
@@ -226,12 +362,23 @@ const CartModal = ({ isOpen, onClose }) => {
                   </div>
                 ))}
                 <hr className="my-2" />
-                <div className="flex justify-between font-bold">
-                  <span>Total</span>
+                <div className="flex justify-between text-sm mb-1">
+                  <span>Sous-total</span>
                   <span>{total.toFixed(2)}€</span>
                 </div>
+                {orderType === 'livraison' && (
+                  <div className="flex justify-between text-sm mb-1">
+                    <span>Frais de livraison</span>
+                    <span>5.00€</span>
+                  </div>
+                )}
+                <hr className="my-2" />
+                <div className="flex justify-between font-bold text-lg">
+                  <span>Total</span>
+                  <span className="text-[#E30613]">{totalWithDelivery.toFixed(2)}€</span>
+                </div>
                 <p className="text-xs text-gray-500 mt-2">
-                  * Paiement à la livraison • Frais de livraison : 5€
+                  💰 Paiement à la {orderType === 'livraison' ? 'livraison' : 'remise'}
                 </p>
               </div>
             </form>
@@ -241,26 +388,27 @@ const CartModal = ({ isOpen, onClose }) => {
         {/* Footer */}
         <div className="border-t p-4">
           {!showOrderForm ? (
-            <div className="flex justify-between items-center">
-              <div className="text-lg font-bold text-gray-800">
-                Total: {total.toFixed(2)}€
-              </div>
-              <div className="flex space-x-2">
+            <div className="space-y-3">
+              <div className="flex justify-between items-center">
+                <div className="text-lg font-bold text-gray-800">
+                  Total: {total.toFixed(2)}€
+                </div>
                 <Button 
                   onClick={() => clearCart()}
                   variant="outline"
                   disabled={items.length === 0}
+                  className="border-red-500 text-red-500 hover:bg-red-500 hover:text-white"
                 >
                   Vider le panier
                 </Button>
-                <Button 
-                  onClick={() => setShowOrderForm(true)}
-                  className="bg-[#E30613] hover:bg-[#B8050F]"
-                  disabled={items.length === 0}
-                >
-                  Commander ({total.toFixed(2)}€)
-                </Button>
               </div>
+              <Button 
+                onClick={() => setShowOrderForm(true)}
+                className="w-full bg-[#E30613] hover:bg-[#B8050F]"
+                disabled={items.length === 0}
+              >
+                Commander ({total.toFixed(2)}€)
+              </Button>
             </div>
           ) : (
             <div className="flex space-x-2">
@@ -278,7 +426,7 @@ const CartModal = ({ isOpen, onClose }) => {
                 disabled={isSubmitting}
                 className="bg-[#E30613] hover:bg-[#B8050F] flex-1"
               >
-                {isSubmitting ? 'Envoi...' : `Confirmer la commande (${total.toFixed(2)}€)`}
+                {isSubmitting ? 'Envoi...' : `Confirmer (${totalWithDelivery.toFixed(2)}€)`}
               </Button>
             </div>
           )}
