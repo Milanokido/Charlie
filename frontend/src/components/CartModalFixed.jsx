@@ -222,6 +222,7 @@ const CartModalFixed = ({ isOpen, onClose }) => {
       // Check for successful response
       if (response.status === 200 && result && result.ok === true) {
         console.log('✅ Order submitted successfully!', result);
+        setOrderResult(result); // Store the result for display
         setOrderSubmitted(true);
         clearCart();
         
