@@ -146,6 +146,7 @@ const CartModalFixed = ({ isOpen, onClose }) => {
     }
 
     setIsSubmitting(true);
+    console.log('🚀 Starting order submission...');
 
     try {
       // Préparer les données pour Google Sheets avec le nouveau format
@@ -168,9 +169,10 @@ const CartModalFixed = ({ isOpen, onClose }) => {
         fraisLivraison: orderType === 'livraison' ? 5 : 0
       };
 
-      console.log('📊 Données envoyées à Google Sheets:', orderDetails);
+      console.log('📊 Payload to send:', JSON.stringify(orderDetails, null, 2));
 
-      // Envoi vers le nouveau webhook Google Sheets
+      // First try with JSON
+      console.log('📡 Attempting JSON POST...');
       const response = await fetch('https://script.google.com/macros/s/AKfycby_29hihc8W__dXRn7iclaud0Jk9D1-JwT4NHdJ18nKcbOU5l1Uf27hYXNsKRATP2pD/exec', {
         method: 'POST',
         headers: {
@@ -179,13 +181,51 @@ const CartModalFixed = ({ isOpen, onClose }) => {
         body: JSON.stringify(orderDetails)
       });
 
-      // Vérifier la réponse
-      const result = await response.json();
-      console.log('📤 Réponse Google Sheets:', result);
+      console.log('📊 Response status:', response.status);
+      console.log('📊 Response headers:', Object.fromEntries(response.headers.entries()));
       
-      if (result.ok === true) {
+      // Get raw response text first
+      const responseText = await response.text();
+      console.log('📊 Raw response text:', responseText);
+      
+      let result;
+      try {
+        result = JSON.parse(responseText);
+        console.log('📤 Parsed JSON response:', result);
+      } catch (jsonError) {
+        console.error('❌ Failed to parse JSON response:', jsonError);
+        console.log('📄 Response was not valid JSON, trying form fallback...');
+        
+        // Fallback to form-urlencoded
+        console.log('📡 Attempting form-urlencoded POST fallback...');
+        const formResponse = await fetch('https://script.google.com/macros/s/AKfycby_29hihc8W__dXRn7iclaud0Jk9D1-JwT4NHdJ18nKcbOU5l1Uf27hYXNsKRATP2pD/exec', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: `payload=${encodeURIComponent(JSON.stringify(orderDetails))}`
+        });
+        
+        console.log('📊 Form response status:', formResponse.status);
+        const formResponseText = await formResponse.text();
+        console.log('📊 Form raw response:', formResponseText);
+        
+        try {
+          result = JSON.parse(formResponseText);
+          console.log('📤 Form parsed response:', result);
+        } catch (formJsonError) {
+          throw new Error(`Response not valid JSON. Status: ${response.status}, Text: ${responseText}`);
+        }
+      }
+      
+      // Check for successful response
+      if (response.status === 200 && result && result.ok === true) {
+        console.log('✅ Order submitted successfully!', result);
         setOrderSubmitted(true);
         clearCart();
+        
+        // Show success message with order ID
+        console.log(`🎉 Order ID: ${result.order_id}, Message: ${result.message}`);
         
         // Fermer automatiquement après 4 secondes
         setTimeout(() => {
@@ -196,12 +236,15 @@ const CartModalFixed = ({ isOpen, onClose }) => {
           onClose();
         }, 4000);
       } else {
-        throw new Error(result.message || 'Erreur lors de l\'envoi vers Google Sheets');
+        // Handle error response
+        const errorMessage = result?.message || `HTTP ${response.status}: ${responseText}`;
+        console.error('❌ Order submission failed:', errorMessage);
+        alert(`Erreur lors de l'envoi: ${errorMessage}`);
       }
 
-    } catch (error) {
-      console.error('Erreur lors de l\'envoi de la commande:', error);
-      alert('Erreur lors de l\'envoi de la commande. Veuillez appeler le restaurant au 09 86 15 17 24.');
+    } catch (networkError) {
+      console.error('❌ Network/fetch error:', networkError);
+      alert(`Erreur de connexion: ${networkError.message}. Veuillez appeler le restaurant au 09 86 15 17 24.`);
     } finally {
       setIsSubmitting(false);
     }
