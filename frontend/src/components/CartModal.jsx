@@ -531,14 +531,14 @@ const CartModal = ({ isOpen, onClose }) => {
               >
                 Retour au panier
               </button>
-              <Button 
+              <button 
                 type="submit"
                 onClick={handleSubmitOrder}
                 disabled={isSubmitting}
-                className="bg-[#E30613] hover:bg-[#B8050F] flex-1"
+                className="bg-[#E30613] hover:bg-[#B8050F] text-white px-4 py-2 rounded-lg font-medium flex-1 disabled:opacity-50"
               >
                 {isSubmitting ? 'Envoi...' : `Confirmer (${totalWithDelivery.toFixed(2)}€)`}
-              </Button>
+              </button>
             </div>
           )}
         </div>
