@@ -478,14 +478,14 @@ const CartModal = ({ isOpen, onClose }) => {
           {!showOrderForm ? (
             <div className="space-y-3">
               <div className="flex justify-between items-center">
-                <div className="text-lg font-bold text-gray-800">
+                <div className="text-lg font-bold text-gray-900">
                   Total: {total.toFixed(2)}€
                 </div>
                 <Button 
                   onClick={() => clearCart()}
                   variant="outline"
                   disabled={items.length === 0}
-                  className="border-red-500 text-red-500 hover:bg-red-500 hover:text-white"
+                  className="border-red-500 text-red-600 hover:bg-red-500 hover:text-white disabled:opacity-50"
                 >
                   Vider le panier
                 </Button>
