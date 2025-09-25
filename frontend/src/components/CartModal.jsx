@@ -511,7 +511,11 @@ const CartModal = ({ isOpen, onClose }) => {
                 </Button>
               </div>
               <Button 
-                onClick={() => setShowOrderForm(true)}
+                onClick={() => {
+                  console.log('Commander button clicked! Items:', items.length, 'Current showOrderForm:', showOrderForm);
+                  setShowOrderForm(true);
+                  console.log('setShowOrderForm(true) called');
+                }}
                 className="w-full bg-[#E30613] hover:bg-[#B8050F]"
                 disabled={items.length === 0}
               >
