@@ -11,9 +11,10 @@ const CartModal = ({ isOpen, onClose }) => {
     name: '',
     phone: '',
     address: '',
+    postalCode: '',
+    city: '',
     comment: ''
   });
-  const [addressFromAutocomplete, setAddressFromAutocomplete] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderSubmitted, setOrderSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
