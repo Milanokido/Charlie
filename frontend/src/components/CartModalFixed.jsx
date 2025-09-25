@@ -232,6 +232,7 @@ const CartModalFixed = ({ isOpen, onClose }) => {
         // Fermer automatiquement après 4 secondes
         setTimeout(() => {
           setOrderSubmitted(false);
+          setOrderResult(null);
           setShowOrderForm(false);
           setOrderType('');
           setOrderData({ name: '', phone: '', address: '', postalCode: '', city: '', comment: '' });
