@@ -132,30 +132,30 @@ const CartModal = ({ isOpen, onClose }) => {
     setIsSubmitting(true);
 
     try {
-      // Préparer les données pour Google Sheets avec types corrects
+      // Préparer les données pour Google Sheets avec le nouveau format
       const orderDetails = {
         token: "MOS123",
         typeCommande: orderType,
         nom: orderData.name.trim(),
         telephone: normalizePhone(orderData.phone),
         adresse: orderType === 'livraison' ? orderData.address.trim() : '',
+        codePostal: orderType === 'livraison' ? orderData.postalCode.trim() : '',
+        ville: orderType === 'livraison' ? orderData.city.trim() : '',
         commentaire: orderData.comment.trim() || '',
         panier: items.map(item => ({
-          id: item.id,
           name: item.name,
           qty: parseInt(item.quantity),
-          price: parsePrice(item.price)
+          price: parsePrice(item.price),
+          options: item.options || {}
         })),
         total: parsePrice(total.toFixed(2)),
-        fraisLivraison: orderType === 'livraison' ? 5 : 0,
-        totalTTC: parsePrice(totalWithDelivery.toFixed(2)),
-        timestamp: new Date().toISOString()
+        fraisLivraison: orderType === 'livraison' ? 5 : 0
       };
 
       console.log('📊 Données envoyées à Google Sheets:', orderDetails);
 
-      // Envoi vers Google Sheets avec headers corrects
-      const response = await fetch('https://script.google.com/macros/s/AKfycbxGxmlIrWnB176ZM80q-VC_e5ktoq3yGY7QoH_5lbCcXocbHvuBByG9L-NOT1-S0HMM/exec', {
+      // Envoi vers le nouveau webhook Google Sheets
+      const response = await fetch('https://script.google.com/macros/s/AKfycby_29hihc8W__dXRn7iclaud0Jk9D1-JwT4NHdJ18nKcbOU5l1Uf27hYXNsKRATP2pD/exec', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
