@@ -81,6 +81,20 @@ const CartModal = ({ isOpen, onClose }) => {
     return Object.keys(newErrors).length === 0;
   };
 
+  // Fonction utilitaire pour parser les prix correctement
+  const parsePrice = (priceStr) => {
+    if (!priceStr) return 0;
+    // Remplacer virgule par point et supprimer tout sauf les chiffres et le point
+    const cleanPrice = priceStr.toString().replace(',', '.').replace(/[^\d.]/g, '');
+    const parsed = parseFloat(cleanPrice);
+    return isNaN(parsed) ? 0 : parsed;
+  };
+
+  // Fonction pour normaliser le téléphone
+  const normalizePhone = (phone) => {
+    return phone.replace(/[\s\-\.]/g, '');
+  };
+
   const handleSubmitOrder = async (e) => {
     e.preventDefault();
     
@@ -95,19 +109,19 @@ const CartModal = ({ isOpen, onClose }) => {
       const orderDetails = {
         token: "MOS123",
         typeCommande: orderType,
-        nom: orderData.name,
-        telephone: orderData.phone,
-        adresse: orderType === 'livraison' ? orderData.address : '',
-        commentaire: orderData.comment || '',
+        nom: orderData.name.trim(),
+        telephone: normalizePhone(orderData.phone),
+        adresse: orderType === 'livraison' ? orderData.address.trim() : '',
+        commentaire: orderData.comment.trim() || '',
         panier: items.map(item => ({
           id: item.id,
           name: item.name,
-          qty: item.quantity,
-          price: parseFloat(item.price.replace(',', '.').replace(' €', '')) // Convertir en nombre
+          qty: parseInt(item.quantity),
+          price: parsePrice(item.price)
         })),
-        total: parseFloat(total.toFixed(2)), // Nombre, pas string
-        fraisLivraison: deliveryFee,
-        totalTTC: parseFloat(totalWithDelivery.toFixed(2)),
+        total: parsePrice(total.toFixed(2)),
+        fraisLivraison: orderType === 'livraison' ? 5 : 0,
+        totalTTC: parsePrice(totalWithDelivery.toFixed(2)),
         timestamp: new Date().toISOString()
       };
 
@@ -122,19 +136,25 @@ const CartModal = ({ isOpen, onClose }) => {
         body: JSON.stringify(orderDetails)
       });
 
-      console.log('📤 Réponse Google Sheets:', response);
+      // Vérifier la réponse
+      const result = await response.json();
+      console.log('📤 Réponse Google Sheets:', result);
       
-      setOrderSubmitted(true);
-      clearCart();
-      
-      // Fermer automatiquement après 4 secondes
-      setTimeout(() => {
-        setOrderSubmitted(false);
-        setShowOrderForm(false);
-        setOrderType('');
-        setOrderData({ name: '', phone: '', address: '', comment: '' });
-        onClose();
-      }, 4000);
+      if (result.ok === true) {
+        setOrderSubmitted(true);
+        clearCart();
+        
+        // Fermer automatiquement après 4 secondes
+        setTimeout(() => {
+          setOrderSubmitted(false);
+          setShowOrderForm(false);
+          setOrderType('');
+          setOrderData({ name: '', phone: '', address: '', comment: '' });
+          onClose();
+        }, 4000);
+      } else {
+        throw new Error(result.message || 'Erreur lors de l\'envoi vers Google Sheets');
+      }
 
     } catch (error) {
       console.error('Erreur lors de l\'envoi de la commande:', error);
