@@ -39,11 +39,28 @@ const CartModal = ({ isOpen, onClose }) => {
       ...orderData,
       [name]: value
     });
+    
+    // Si c'est l'adresse et qu'elle est modifiée manuellement, réinitialiser le flag
+    if (name === 'address') {
+      setAddressFromAutocomplete(false);
+    }
+    
     // Clear error when user starts typing
     if (errors[name]) {
       setErrors({
         ...errors,
         [name]: ''
+      });
+    }
+  };
+
+  const handleAddressSelect = (addressData) => {
+    setAddressFromAutocomplete(true);
+    // Supprimer l'erreur d'adresse si elle existait
+    if (errors.address) {
+      setErrors({
+        ...errors,
+        address: ''
       });
     }
   };
