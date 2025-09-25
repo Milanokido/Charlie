@@ -299,7 +299,7 @@ const CartModal = ({ isOpen, onClose }) => {
             <form onSubmit={handleSubmitOrder} className="space-y-4">
               {/* Type de commande */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-900 mb-2">
                   Type de commande *
                 </label>
                 <div className="grid grid-cols-3 gap-2">
@@ -314,16 +314,16 @@ const CartModal = ({ isOpen, onClose }) => {
                       onClick={() => setOrderType(option.value)}
                       className={`p-3 border rounded-lg text-center transition-colors ${
                         orderType === option.value 
-                          ? 'border-[#E30613] bg-[#E30613] text-white' 
-                          : 'border-gray-300 hover:border-[#E30613]'
+                          ? 'border-[#E30613] bg-[#E30613] text-white font-semibold' 
+                          : 'border-gray-300 hover:border-[#E30613] text-gray-900 bg-white hover:bg-gray-50'
                       }`}
                     >
                       <div className="text-sm font-medium">{option.label}</div>
-                      {option.extra && <div className="text-xs">{option.extra}</div>}
+                      {option.extra && <div className="text-xs opacity-90">{option.extra}</div>}
                     </button>
                   ))}
                 </div>
-                {errors.orderType && <p className="text-red-500 text-sm mt-1">{errors.orderType}</p>}
+                {errors.orderType && <p className="text-red-600 text-sm mt-1 font-medium bg-white px-2 py-1 rounded">{errors.orderType}</p>}
               </div>
 
               {/* Minimum de commande pour livraison */}
