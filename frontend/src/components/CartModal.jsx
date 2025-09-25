@@ -250,14 +250,14 @@ const CartModal = ({ isOpen, onClose }) => {
                 {items.map((item, index) => (
                   <div key={`${item.id}-${index}`} className="flex items-center justify-between p-3 border rounded-lg">
                     <div className="flex-1">
-                      <h4 className="font-medium text-gray-800">
+                      <h4 className="font-medium text-gray-900">
                         {item.name}
-                        <span className="text-sm text-gray-500">
+                        <span className="text-sm text-gray-600">
                           {getMenuNote(item.category)}
                         </span>
                       </h4>
                       {item.description && (
-                        <p className="text-sm text-gray-500 mt-1">{item.description}</p>
+                        <p className="text-sm text-gray-600 mt-1">{item.description}</p>
                       )}
                       <p className="text-[#E30613] font-bold">{item.price}</p>
                     </div>
