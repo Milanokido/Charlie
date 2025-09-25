@@ -521,7 +521,7 @@ const CartModal = ({ isOpen, onClose }) => {
                 type="button"
                 onClick={() => setShowOrderForm(false)}
                 variant="outline"
-                className="flex-1"
+                className="flex-1 border-gray-300 text-gray-900 bg-white hover:bg-gray-50 hover:text-gray-900"
               >
                 Retour au panier
               </Button>
