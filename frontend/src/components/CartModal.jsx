@@ -441,21 +441,21 @@ const CartModal = ({ isOpen, onClose }) => {
               </div>
 
               {/* Récapitulatif */}
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h4 className="font-medium text-gray-800 mb-3">Récapitulatif de votre commande</h4>
+              <div className="bg-gray-50 border border-gray-200 p-4 rounded-lg">
+                <h4 className="font-medium text-gray-900 mb-3">Récapitulatif de votre commande</h4>
                 {items.map((item, index) => (
-                  <div key={index} className="flex justify-between text-sm mb-1 text-gray-800">
+                  <div key={index} className="flex justify-between text-sm mb-1 text-gray-900">
                     <span>{item.quantity}x {item.name}</span>
                     <span className="font-medium">{(parsePrice(item.price) * item.quantity).toFixed(2)}€</span>
                   </div>
                 ))}
-                <hr className="my-2 border-gray-300" />
-                <div className="flex justify-between text-sm mb-1 text-gray-800">
+                <hr className="my-2 border-gray-400" />
+                <div className="flex justify-between text-sm mb-1 text-gray-900">
                   <span>Sous-total</span>
                   <span className="font-medium">{total.toFixed(2)}€</span>
                 </div>
                 {orderType === 'livraison' && (
-                  <div className="flex justify-between text-sm mb-1 text-gray-800">
+                  <div className="flex justify-between text-sm mb-1 text-gray-900">
                     <span>Frais de livraison</span>
                     <span className="font-medium">5.00€</span>
                   </div>
@@ -465,7 +465,7 @@ const CartModal = ({ isOpen, onClose }) => {
                   <span>Total</span>
                   <span className="text-[#E30613]">{totalWithDelivery.toFixed(2)}€</span>
                 </div>
-                <p className="text-xs text-gray-700 mt-2">
+                <p className="text-xs text-gray-800 mt-2">
                   💰 Paiement à la {orderType === 'livraison' ? 'livraison' : 'remise'}
                 </p>
               </div>
