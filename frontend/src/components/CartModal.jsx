@@ -501,14 +501,13 @@ const CartModal = ({ isOpen, onClose }) => {
                 <div className="text-lg font-bold text-gray-900">
                   Total: {total.toFixed(2)}€
                 </div>
-                <Button 
+                <button 
                   onClick={() => clearCart()}
-                  variant="outline"
                   disabled={items.length === 0}
-                  className="border-red-500 text-red-600 hover:bg-red-500 hover:text-white disabled:opacity-50"
+                  className="border border-red-500 text-red-600 hover:bg-red-500 hover:text-white disabled:opacity-50 px-4 py-2 rounded-lg font-medium"
                 >
                   Vider le panier
-                </Button>
+                </button>
               </div>
               <button 
                 onClick={() => {
