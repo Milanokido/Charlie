@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
-import { Phone, MapPin, Clock, Star, Menu as MenuIcon, X, ShoppingCart, Plus } from 'lucide-react';
+import { Phone, MapPin, Clock, Star, Menu as MenuIcon, X, ShoppingCart, Plus, Minus } from 'lucide-react';
 import { mockData } from '../data/mock';
 import { useCart } from './CartContext';
 import CartModal from './CartModal';
