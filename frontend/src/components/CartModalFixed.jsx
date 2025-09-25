@@ -264,10 +264,19 @@ const CartModalFixed = ({ isOpen, onClose }) => {
           <p className="text-gray-600 mb-4">
             Votre commande a été transmise au restaurant Charlie Foods.
           </p>
+          {orderResult && orderResult.order_id && (
+            <div className="bg-gray-100 p-3 rounded-lg mb-4">
+              <p className="text-sm text-gray-700">Numéro de commande :</p>
+              <p className="text-lg font-bold text-[#E30613]">{orderResult.order_id}</p>
+            </div>
+          )}
           <div className="bg-[#E30613] text-white p-3 rounded-lg">
             <p className="font-medium">Vous serez contacté sous peu au :</p>
             <p className="text-lg font-bold">{orderData.phone}</p>
           </div>
+          {orderResult && orderResult.message && (
+            <p className="text-xs text-gray-500 mt-3">{orderResult.message}</p>
+          )}
         </div>
       </div>
     );
