@@ -602,4 +602,4 @@ const CartModal = ({ isOpen, onClose }) => {
   );
 };
 
-export default CartModalFixed;
+export default CartModal;
