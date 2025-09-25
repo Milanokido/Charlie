@@ -64,9 +64,13 @@ const CartModal = ({ isOpen, onClose }) => {
       newErrors.phone = 'Format invalide (ex: 06XXXXXXXX)';
     }
 
-    // Adresse obligatoire pour livraison
-    if (orderType === 'livraison' && !orderData.address.trim()) {
-      newErrors.address = 'L\'adresse est obligatoire pour la livraison';
+    // Adresse obligatoire pour livraison et doit venir de l'autocomplétion
+    if (orderType === 'livraison') {
+      if (!orderData.address.trim()) {
+        newErrors.address = 'L\'adresse est obligatoire pour la livraison';
+      } else if (!addressFromAutocomplete) {
+        newErrors.address = 'Veuillez sélectionner une adresse dans la liste d\'autocomplétion';
+      }
     }
 
     // Type de commande obligatoire
