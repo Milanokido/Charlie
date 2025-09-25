@@ -17,6 +17,7 @@ const CartModalFixed = ({ isOpen, onClose }) => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderSubmitted, setOrderSubmitted] = useState(false);
+  const [orderResult, setOrderResult] = useState(null); // Store order result
   const [errors, setErrors] = useState({});
 
   // Reset form state when modal closes
