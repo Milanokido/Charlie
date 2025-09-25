@@ -20,7 +20,11 @@ const formatOrderForEmail = (orderData) => {
       <td style="padding: 8px;">${item.quantity}</td>
       <td style="padding: 8px;">${item.price}</td>
       <td style="padding: 8px; text-align: right;">
-        ${(parseFloat(item.price.replace(',', '.').replace(' €', '')) * item.quantity).toFixed(2)}€
+        ${(() => {
+          const cleanPrice = item.price.toString().replace(',', '.').replace(/[^\d.]/g, '');
+          const price = parseFloat(cleanPrice) || 0;
+          return (price * item.quantity).toFixed(2);
+        })()}€
       </td>
     </tr>
   `).join('');
