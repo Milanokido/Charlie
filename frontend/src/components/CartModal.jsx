@@ -510,17 +510,17 @@ const CartModal = ({ isOpen, onClose }) => {
                   Vider le panier
                 </Button>
               </div>
-              <Button 
+              <button 
                 onClick={() => {
                   console.log('Commander button clicked! Items:', items.length, 'Current showOrderForm:', showOrderForm);
                   setShowOrderForm(true);
                   console.log('setShowOrderForm(true) called');
                 }}
-                className="w-full bg-[#E30613] hover:bg-[#B8050F]"
+                className="w-full bg-[#E30613] hover:bg-[#B8050F] text-white px-4 py-2 rounded-lg font-medium disabled:opacity-50"
                 disabled={items.length === 0}
               >
                 Commander ({total.toFixed(2)}€)
-              </Button>
+              </button>
             </div>
           ) : (
             <div className="flex space-x-2">
