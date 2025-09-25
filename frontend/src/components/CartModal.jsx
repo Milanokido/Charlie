@@ -36,6 +36,9 @@ const CartModal = ({ isOpen, onClose }) => {
     }
   }, [isOpen]);
 
+  // Debug render state
+  console.log('CartModal render - isOpen:', isOpen, 'showOrderForm:', showOrderForm, 'items.length:', items.length);
+
   if (!isOpen) return null;
 
   // Calcul du total avec frais de livraison
