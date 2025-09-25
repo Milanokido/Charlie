@@ -37,7 +37,8 @@ const cartReducer = (state, action) => {
       }
       
       const newTotal = updatedItems.reduce((total, item) => {
-        const price = parseFloat(item.price.replace(',', '.').replace(' €', ''));
+        const cleanPrice = item.price.toString().replace(',', '.').replace(/[^\d.]/g, '');
+        const price = parseFloat(cleanPrice) || 0;
         return total + (price * item.quantity);
       }, 0);
       
