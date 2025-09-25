@@ -173,14 +173,14 @@ const CartModal = ({ isOpen, onClose }) => {
 
       console.log('📊 Payload to send:', JSON.stringify(orderDetails, null, 2));
 
-      // First try with JSON
-      console.log('📡 Attempting JSON POST...');
+      // Use form-urlencoded to avoid CORS issues with Google Apps Script
+      console.log('📡 Attempting form-urlencoded POST (CORS-safe)...');
       const response = await fetch('https://script.google.com/macros/s/AKfycby_29hihc8W__dXRn7iclaud0Jk9D1-JwT4NHdJ18nKcbOU5l1Uf27hYXNsKRATP2pD/exec', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: JSON.stringify(orderDetails)
+        body: `payload=${encodeURIComponent(JSON.stringify(orderDetails))}`
       });
 
       console.log('📊 Response status:', response.status);
@@ -196,28 +196,7 @@ const CartModal = ({ isOpen, onClose }) => {
         console.log('📤 Parsed JSON response:', result);
       } catch (jsonError) {
         console.error('❌ Failed to parse JSON response:', jsonError);
-        console.log('📄 Response was not valid JSON, trying form fallback...');
-        
-        // Fallback to form-urlencoded
-        console.log('📡 Attempting form-urlencoded POST fallback...');
-        const formResponse = await fetch('https://script.google.com/macros/s/AKfycby_29hihc8W__dXRn7iclaud0Jk9D1-JwT4NHdJ18nKcbOU5l1Uf27hYXNsKRATP2pD/exec', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-          },
-          body: `payload=${encodeURIComponent(JSON.stringify(orderDetails))}`
-        });
-        
-        console.log('📊 Form response status:', formResponse.status);
-        const formResponseText = await formResponse.text();
-        console.log('📊 Form raw response:', formResponseText);
-        
-        try {
-          result = JSON.parse(formResponseText);
-          console.log('📤 Form parsed response:', result);
-        } catch (formJsonError) {
-          throw new Error(`Response not valid JSON. Status: ${response.status}, Text: ${responseText}`);
-        }
+        throw new Error(`Response not valid JSON. Status: ${response.status}, Text: ${responseText}`);
       }
       
       // Check for successful response
