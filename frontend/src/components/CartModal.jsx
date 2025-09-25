@@ -248,6 +248,7 @@ const CartModal = ({ isOpen, onClose }) => {
           <h2 className="text-xl font-bold text-gray-800 flex items-center">
             <ShoppingCart className="mr-2" />
             {showOrderForm ? 'Finaliser la commande' : 'Mon Panier'}
+            <span className="text-xs ml-2 text-gray-500">[Debug: showOrderForm={showOrderForm.toString()}]</span>
           </h2>
           <button 
             onClick={onClose}
