@@ -34,6 +34,7 @@ const CartModalFixed = ({ isOpen, onClose }) => {
         comment: ''
       });
       setErrors({});
+      setOrderResult(null);
     }
   }, [isOpen]);
 
