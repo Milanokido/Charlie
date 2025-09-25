@@ -1,0 +1,12 @@
+{
+  "cart_modal_tests": [
+    "✅ Successfully added items to cart",
+    "✅ Cart modal opened successfully"
+  ],
+  "checkout_form_tests": [],
+  "address_field_tests": [],
+  "ui_contrast_tests": [],
+  "errors": [
+    "❌ Test error: Locator.is_visible: Error: strict mode violation: locator(\"div:has-text('Mon Panier')\") resolved to 6 elements:\n    1) <div id=\"root\">…</div> aka locator(\"#root\")\n    2) <div class=\"App\">…</div> aka locator(\"div\").filter(has_text=\"Charlie FoodsAccueilMenuInfosGalerieÀ proposContact2AppelerCharlie Foods –\").nth(1)\n    3) <div class=\"charlie-site overflow-x-hidden\">…</div> aka get_by_text(\"Charlie FoodsAccueilMenuInfosGalerieÀ proposContact2AppelerCharlie Foods –\")\n    4) <div class=\"fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4\">…</div> aka locator(\"div\").filter(has_text=\"Mon PanierLe Bacon (inclus:\").nth(3)\n    5) <div class=\"bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-hidden\">…</div> aka get_by_text(\"Mon PanierLe Bacon (inclus:\")\n    6) <div class=\"flex items-center justify-between p-4 border-b\">…</div> aka locator(\"div\").filter(has_text=re.compile(r\"^Mon Panier$\"))\n\nCall log:\n    - checking visibility of locator(\"div:has-text('Mon Panier')\")\n"
+  ]
+}
