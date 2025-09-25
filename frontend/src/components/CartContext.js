@@ -50,7 +50,8 @@ const cartReducer = (state, action) => {
     case cartActions.REMOVE_ITEM:
       const filteredItems = state.items.filter(item => item.id !== action.payload);
       const totalAfterRemove = filteredItems.reduce((total, item) => {
-        const price = parseFloat(item.price.replace(',', '.').replace(' €', ''));
+        const cleanPrice = item.price.toString().replace(',', '.').replace(/[^\d.]/g, '');
+        const price = parseFloat(cleanPrice) || 0;
         return total + (price * item.quantity);
       }, 0);
       
