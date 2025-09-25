@@ -511,15 +511,16 @@ const CartModal = ({ isOpen, onClose }) => {
                 </button>
               </div>
               <button 
-                onClick={() => {
-                  console.log('Commander button clicked! Items:', items.length, 'Current showOrderForm:', showOrderForm);
-                  setShowOrderForm(true);
-                  console.log('setShowOrderForm(true) called');
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  alert('Commander button clicked!');
+                  setShowOrderForm(prev => !prev);
                 }}
                 className="w-full bg-[#E30613] hover:bg-[#B8050F] text-white px-4 py-2 rounded-lg font-medium disabled:opacity-50"
                 disabled={items.length === 0}
               >
-                Commander ({total.toFixed(2)}€)
+                Commander ({total.toFixed(2)}€) [Toggle: {showOrderForm ? 'true' : 'false'}]
               </button>
             </div>
           ) : (
