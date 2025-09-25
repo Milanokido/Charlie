@@ -328,14 +328,14 @@ const CartModal = ({ isOpen, onClose }) => {
 
               {/* Minimum de commande pour livraison */}
               {errors.minimum && (
-                <div className="bg-red-50 border border-red-200 rounded-lg p-3">
-                  <p className="text-red-600 text-sm">{errors.minimum}</p>
+                <div className="bg-red-50 border border-red-300 rounded-lg p-3">
+                  <p className="text-red-700 text-sm font-medium">{errors.minimum}</p>
                 </div>
               )}
 
               {/* Informations client */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-gray-900 mb-1">
                   Nom complet *
                 </label>
                 <input
@@ -343,15 +343,16 @@ const CartModal = ({ isOpen, onClose }) => {
                   name="name"
                   value={orderData.name}
                   onChange={handleInputChange}
-                  className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:border-[#E30613] ${
+                  placeholder="Votre nom et prénom"
+                  className={`w-full border rounded-lg px-3 py-2 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:border-[#E30613] focus:ring-1 focus:ring-[#E30613] ${
                     errors.name ? 'border-red-500' : 'border-gray-300'
                   }`}
                 />
-                {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+                {errors.name && <p className="text-red-600 text-sm mt-1 font-medium bg-white px-2 py-1 rounded">{errors.name}</p>}
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-gray-900 mb-1">
                   Téléphone * (06XXXXXXXX ou 07XXXXXXXX)
                 </label>
                 <input
@@ -360,11 +361,11 @@ const CartModal = ({ isOpen, onClose }) => {
                   value={orderData.phone}
                   onChange={handleInputChange}
                   placeholder="06 12 34 56 78"
-                  className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:border-[#E30613] ${
+                  className={`w-full border rounded-lg px-3 py-2 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:border-[#E30613] focus:ring-1 focus:ring-[#E30613] ${
                     errors.phone ? 'border-red-500' : 'border-gray-300'
                   }`}
                 />
-                {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+                {errors.phone && <p className="text-red-600 text-sm mt-1 font-medium bg-white px-2 py-1 rounded">{errors.phone}</p>}
               </div>
               
               {orderType === 'livraison' && (
