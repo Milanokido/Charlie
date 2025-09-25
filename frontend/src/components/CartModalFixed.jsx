@@ -326,25 +326,28 @@ const CartModalFixed = ({ isOpen, onClose }) => {
                     <div className="flex items-center space-x-2 ml-4">
                       <button
                         onClick={() => handleQuantityChange(item.id, item.quantity - 1)}
-                        className="p-1 rounded-full hover:bg-gray-200"
+                        className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-800 border border-gray-300 shadow-sm"
+                        title="Diminuer la quantité"
                       >
                         <Minus className="h-4 w-4" />
                       </button>
                       
-                      <span className="w-8 text-center font-medium bg-gray-100 text-gray-900 rounded px-2 py-1">
+                      <span className="w-10 text-center font-bold bg-white text-gray-900 border-2 border-gray-300 rounded px-3 py-2 text-sm shadow-sm">
                         {item.quantity}
                       </span>
                       
                       <button
                         onClick={() => handleQuantityChange(item.id, item.quantity + 1)}
-                        className="p-1 rounded-full hover:bg-gray-200"
+                        className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-800 border border-gray-300 shadow-sm"
+                        title="Augmenter la quantité"
                       >
                         <Plus className="h-4 w-4" />
                       </button>
                       
                       <button
                         onClick={() => removeItem(item.id)}
-                        className="p-1 rounded-full hover:bg-red-100 text-red-600 ml-2"
+                        className="p-2 rounded-full bg-red-100 hover:bg-red-200 text-red-700 border border-red-300 ml-2 shadow-sm"
+                        title="Supprimer l'article"
                       >
                         <Trash2 className="h-4 w-4" />
                       </button>
