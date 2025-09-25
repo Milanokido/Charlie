@@ -12,7 +12,7 @@ const CharlieHome = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [cartModalOpen, setCartModalOpen] = useState(false);
-  const { addItem, getItemCount } = useCart();
+  const { addItem, getItemCount, items, updateQuantity } = useCart();
 
   // Update time every 30 seconds for real-time status
   useEffect(() => {
