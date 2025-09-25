@@ -35,14 +35,19 @@ const CartModal = ({ isOpen, onClose }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setOrderData({
-      ...orderData,
-      [name]: value
-    });
     
-    // Si c'est l'adresse et qu'elle est modifiée manuellement, réinitialiser le flag
-    if (name === 'address') {
-      setAddressFromAutocomplete(false);
+    // Special handling for postal code - only allow digits
+    if (name === 'postalCode') {
+      const onlyDigits = value.replace(/\D/g, '').slice(0, 5);
+      setOrderData({
+        ...orderData,
+        [name]: onlyDigits
+      });
+    } else {
+      setOrderData({
+        ...orderData,
+        [name]: value
+      });
     }
     
     // Clear error when user starts typing
@@ -50,17 +55,6 @@ const CartModal = ({ isOpen, onClose }) => {
       setErrors({
         ...errors,
         [name]: ''
-      });
-    }
-  };
-
-  const handleAddressSelect = (addressData) => {
-    setAddressFromAutocomplete(true);
-    // Supprimer l'erreur d'adresse si elle existait
-    if (errors.address) {
-      setErrors({
-        ...errors,
-        address: ''
       });
     }
   };
