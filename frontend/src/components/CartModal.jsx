@@ -240,7 +240,6 @@ const CartModal = ({ isOpen, onClose }) => {
         {!showOrderForm ? (
           // Vue du panier
           <div className="p-4 overflow-y-auto max-h-[calc(90vh-200px)]">
-            {console.log('Rendering cart view, showOrderForm:', showOrderForm)}
             {items.length === 0 ? (
               <div className="text-center py-8 text-gray-500">
                 <ShoppingCart className="h-16 w-16 mx-auto mb-4 text-gray-300" />
