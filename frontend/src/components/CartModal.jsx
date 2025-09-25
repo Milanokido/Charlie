@@ -524,14 +524,13 @@ const CartModal = ({ isOpen, onClose }) => {
             </div>
           ) : (
             <div className="flex space-x-2">
-              <Button 
+              <button 
                 type="button"
                 onClick={() => setShowOrderForm(false)}
-                variant="outline"
-                className="flex-1 border-gray-300 text-gray-900 bg-white hover:bg-gray-50 hover:text-gray-900"
+                className="flex-1 border border-gray-300 text-gray-900 bg-white hover:bg-gray-50 hover:text-gray-900 px-4 py-2 rounded-lg font-medium"
               >
                 Retour au panier
-              </Button>
+              </button>
               <Button 
                 type="submit"
                 onClick={handleSubmitOrder}
