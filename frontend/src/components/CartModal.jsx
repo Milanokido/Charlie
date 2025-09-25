@@ -270,7 +270,7 @@ const CartModal = ({ isOpen, onClose }) => {
                         <Minus className="h-4 w-4" />
                       </button>
                       
-                      <span className="w-8 text-center font-medium bg-gray-100 rounded px-2 py-1">
+                      <span className="w-8 text-center font-medium bg-gray-100 text-gray-900 rounded px-2 py-1">
                         {item.quantity}
                       </span>
                       
