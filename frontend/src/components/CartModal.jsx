@@ -19,6 +19,23 @@ const CartModal = ({ isOpen, onClose }) => {
   const [orderSubmitted, setOrderSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
 
+  // Reset form state when modal closes
+  React.useEffect(() => {
+    if (!isOpen) {
+      setShowOrderForm(false);
+      setOrderType('');
+      setOrderData({
+        name: '',
+        phone: '',
+        address: '',
+        postalCode: '',
+        city: '',
+        comment: ''
+      });
+      setErrors({});
+    }
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   // Calcul du total avec frais de livraison
