@@ -368,21 +368,61 @@ const CartModal = ({ isOpen, onClose }) => {
               </div>
               
               {orderType === 'livraison' && (
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Adresse de livraison * (sélectionnez dans la liste)
-                  </label>
-                  <AddressAutocomplete
-                    value={orderData.address}
-                    onChange={(value) => handleInputChange({ target: { name: 'address', value } })}
-                    onAddressSelect={handleAddressSelect}
-                    placeholder="Tapez votre adresse et sélectionnez dans la liste"
-                    className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:border-[#E30613] ${
-                      errors.address ? 'border-red-500' : 'border-gray-300'
-                    }`}
-                  />
-                  {errors.address && <p className="text-red-500 text-sm mt-1">{errors.address}</p>}
-                </div>
+                <>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-800 mb-1">
+                      Adresse (rue et numéro) *
+                    </label>
+                    <input
+                      type="text"
+                      name="address"
+                      value={orderData.address}
+                      onChange={handleInputChange}
+                      placeholder="Ex: 12 rue de la Paix"
+                      className={`w-full border rounded-lg px-3 py-2 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:border-[#E30613] focus:ring-1 focus:ring-[#E30613] ${
+                        errors.address ? 'border-red-500' : 'border-gray-300'
+                      }`}
+                    />
+                    {errors.address && <p className="text-red-600 text-sm mt-1 bg-white px-1 rounded">{errors.address}</p>}
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-800 mb-1">
+                        Code postal *
+                      </label>
+                      <input
+                        type="text"
+                        name="postalCode"
+                        value={orderData.postalCode}
+                        onChange={handleInputChange}
+                        placeholder="91400"
+                        maxLength={5}
+                        className={`w-full border rounded-lg px-3 py-2 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:border-[#E30613] focus:ring-1 focus:ring-[#E30613] ${
+                          errors.postalCode ? 'border-red-500' : 'border-gray-300'
+                        }`}
+                      />
+                      {errors.postalCode && <p className="text-red-600 text-sm mt-1 bg-white px-1 rounded">{errors.postalCode}</p>}
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-800 mb-1">
+                        Ville *
+                      </label>
+                      <input
+                        type="text"
+                        name="city"
+                        value={orderData.city}
+                        onChange={handleInputChange}
+                        placeholder="Orsay"
+                        className={`w-full border rounded-lg px-3 py-2 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:border-[#E30613] focus:ring-1 focus:ring-[#E30613] ${
+                          errors.city ? 'border-red-500' : 'border-gray-300'
+                        }`}
+                      />
+                      {errors.city && <p className="text-red-600 text-sm mt-1 bg-white px-1 rounded">{errors.city}</p>}
+                    </div>
+                  </div>
+                </>
               )}
               
               <div>
