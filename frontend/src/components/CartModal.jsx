@@ -296,7 +296,6 @@ const CartModal = ({ isOpen, onClose }) => {
         ) : (
           // Formulaire de commande
           <div className="p-4 overflow-y-auto max-h-[calc(90vh-200px)]">
-            {console.log('Rendering order form, showOrderForm:', showOrderForm)}
             <form onSubmit={handleSubmitOrder} className="space-y-4">
               {/* Type de commande */}
               <div>
