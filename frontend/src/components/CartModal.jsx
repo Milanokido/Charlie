@@ -81,12 +81,22 @@ const CartModal = ({ isOpen, onClose }) => {
       newErrors.phone = 'Format invalide (ex: 06XXXXXXXX)';
     }
 
-    // Adresse obligatoire pour livraison et doit venir de l'autocomplétion
+    // Adresse obligatoire pour livraison
     if (orderType === 'livraison') {
       if (!orderData.address.trim()) {
         newErrors.address = 'L\'adresse est obligatoire pour la livraison';
-      } else if (!addressFromAutocomplete) {
-        newErrors.address = 'Veuillez sélectionner une adresse dans la liste d\'autocomplétion';
+      }
+      
+      // Code postal obligatoire (5 chiffres exactement)
+      if (!orderData.postalCode.trim()) {
+        newErrors.postalCode = 'Le code postal est obligatoire pour la livraison';
+      } else if (!/^\d{5}$/.test(orderData.postalCode.trim())) {
+        newErrors.postalCode = 'Le code postal doit contenir exactement 5 chiffres';
+      }
+      
+      // Ville obligatoire
+      if (!orderData.city.trim()) {
+        newErrors.city = 'La ville est obligatoire pour la livraison';
       }
     }
 
