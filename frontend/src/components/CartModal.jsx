@@ -366,14 +366,13 @@ const CartModal = ({ isOpen, onClose }) => {
               {orderType === 'livraison' && (
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Adresse de livraison *
+                    Adresse de livraison * (sélectionnez dans la liste)
                   </label>
-                  <textarea
-                    name="address"
+                  <AddressAutocomplete
                     value={orderData.address}
-                    onChange={handleInputChange}
-                    rows={3}
-                    placeholder="Adresse complète avec code postal et ville"
+                    onChange={(value) => handleInputChange({ target: { name: 'address', value } })}
+                    onAddressSelect={handleAddressSelect}
+                    placeholder="Tapez votre adresse et sélectionnez dans la liste"
                     className={`w-full border rounded-lg px-3 py-2 focus:outline-none focus:border-[#E30613] ${
                       errors.address ? 'border-red-500' : 'border-gray-300'
                     }`}
