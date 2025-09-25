@@ -5,7 +5,7 @@ import { Badge } from './ui/badge';
 import { Phone, MapPin, Clock, Star, Menu as MenuIcon, X, ShoppingCart, Plus, Minus } from 'lucide-react';
 import { mockData } from '../data/mock';
 import { useCart } from './CartContext';
-import CartModal from './CartModal';
+import CartModal from './CartModalFixed';
 
 const CharlieHome = () => {
   const [lightboxImage, setLightboxImage] = useState(null);
