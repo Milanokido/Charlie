@@ -268,15 +268,33 @@ const CharlieHome = () => {
                         </div>
                         <div className="flex items-center space-x-2 ml-4">
                           <span className="text-[#E30613] font-bold">{item.price}</span>
-                          {/* Afficher le bouton pour TOUTES les catégories sauf suppléments */}
+                          {/* Afficher les contrôles pour TOUTES les catégories sauf suppléments */}
                           {!item.name.toLowerCase().includes('supplément') && (
-                            <button
-                              onClick={() => handleAddToCart(item, category.name)}
-                              className="bg-[#E30613] hover:bg-[#B8050F] text-white p-1 rounded-full transition-colors"
-                              title={`Ajouter ${item.name} au panier`}
-                            >
-                              <Plus className="h-4 w-4" />
-                            </button>
+                            <div className="flex items-center space-x-1">
+                              {getItemQuantity(item, category.name) > 0 && (
+                                <button
+                                  onClick={() => handleRemoveFromCart(item, category.name)}
+                                  className="bg-gray-200 hover:bg-gray-300 text-gray-700 p-1 rounded-full transition-colors"
+                                  title={`Retirer ${item.name} du panier`}
+                                >
+                                  <Minus className="h-3 w-3" />
+                                </button>
+                              )}
+                              
+                              {getItemQuantity(item, category.name) > 0 && (
+                                <span className="bg-[#E30613] text-white px-2 py-1 rounded-full text-xs font-bold min-w-[24px] text-center">
+                                  {getItemQuantity(item, category.name)}
+                                </span>
+                              )}
+                              
+                              <button
+                                onClick={() => handleAddToCart(item, category.name)}
+                                className="bg-[#E30613] hover:bg-[#B8050F] text-white p-1 rounded-full transition-colors"
+                                title={`Ajouter ${item.name} au panier`}
+                              >
+                                <Plus className="h-3 w-3" />
+                              </button>
+                            </div>
                           )}
                         </div>
                       </div>
