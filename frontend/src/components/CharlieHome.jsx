@@ -50,6 +50,24 @@ const CharlieHome = () => {
     addItem(cartItem);
   };
 
+  const handleRemoveFromCart = (item, categoryName) => {
+    const itemId = `${categoryName}-${item.name}`.replace(/\s+/g, '-').toLowerCase();
+    const existingItem = items.find(cartItem => cartItem.id === itemId);
+    if (existingItem) {
+      if (existingItem.quantity > 1) {
+        updateQuantity(itemId, existingItem.quantity - 1);
+      } else {
+        updateQuantity(itemId, 0); // Cela supprimera l'item
+      }
+    }
+  };
+
+  const getItemQuantity = (item, categoryName) => {
+    const itemId = `${categoryName}-${item.name}`.replace(/\s+/g, '-').toLowerCase();
+    const existingItem = items.find(cartItem => cartItem.id === itemId);
+    return existingItem ? existingItem.quantity : 0;
+  };
+
   const getTodayStatus = () => {
     // Get current time and convert to UTC+2 (Paris timezone)
     const now = new Date();
