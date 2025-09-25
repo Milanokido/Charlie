@@ -427,7 +427,7 @@ const CartModal = ({ isOpen, onClose }) => {
               )}
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-medium text-gray-900 mb-1">
                   Commentaire (optionnel)
                 </label>
                 <textarea
@@ -435,7 +435,7 @@ const CartModal = ({ isOpen, onClose }) => {
                   value={orderData.comment}
                   onChange={handleInputChange}
                   rows={2}
-                  className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:border-[#E30613]"
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2 bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:border-[#E30613] focus:ring-1 focus:ring-[#E30613]"
                   placeholder="Instructions spéciales, étage, code d'accès..."
                 />
               </div>
