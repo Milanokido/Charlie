@@ -26,7 +26,6 @@ const CustomizationModal = ({ isOpen, onClose, item, category, onAddToCart }) =>
   ];
 
   const availableCheeses = [
-    'Fromage',
     'Cheddar',
     'Raclette'
   ];
