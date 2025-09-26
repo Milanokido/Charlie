@@ -304,6 +304,48 @@ const CustomizationModal = ({ isOpen, onClose, item, category, onAddToCart }) =>
                 </div>
               )}
 
+              {/* Meat Selection for Bowls */}
+              {isBowls && (
+                <div>
+                  <h4 className="font-medium text-gray-900 mb-3">
+                    Choix des viandes * 
+                    <span className="text-sm font-normal text-gray-600">
+                      (1ère viande incluse • Viandes supplémentaires +1€ chacune)
+                    </span>
+                  </h4>
+                  <div className="space-y-2">
+                    {bowlMeats.map((meat) => (
+                      <button
+                        key={meat}
+                        onClick={() => handleMeatToggle(meat)}
+                        className={`w-full p-3 text-left border rounded-lg transition-colors ${
+                          selectedMeats.includes(meat)
+                            ? 'border-[#E30613] bg-[#E30613] text-white'
+                            : 'border-gray-300 hover:border-[#E30613] text-gray-900'
+                        }`}
+                      >
+                        <div className="flex justify-between items-center">
+                          <span>{meat}</span>
+                          {selectedMeats.includes(meat) && selectedMeats.indexOf(meat) > 0 && (
+                            <span className="text-sm font-bold">+1€</span>
+                          )}
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                  {selectedMeats.length === 0 && (
+                    <p className="text-red-600 text-sm mt-2">Veuillez sélectionner au moins une viande</p>
+                  )}
+                  
+                  {/* Sauce fromagère info */}
+                  <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                    <p className="text-sm text-blue-800">
+                      <span className="font-medium">✓ Sauce fromagère incluse</span>
+                    </p>
+                  </div>
+                </div>
+              )}
+
               {/* Cheese Supplements for Tacos */}
               {isTacos && (
                 <div>
