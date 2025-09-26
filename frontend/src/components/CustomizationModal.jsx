@@ -112,6 +112,9 @@ const CustomizationModal = ({ isOpen, onClose, item, category, onAddToCart }) =>
     if (isTacos && selectedMeats.length === 0) {
       return false;
     }
+    if (isTexMex && !selectedBoxOption) {
+      return false;
+    }
     return true;
   };
 
