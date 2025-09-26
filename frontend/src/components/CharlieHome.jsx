@@ -563,17 +563,10 @@ const CharlieHome = () => {
             )}
           </button>
         </div>
-        <div className="grid grid-cols-2 gap-2">
-          <Button 
-            onClick={() => setCartModalOpen(true)} 
-            className="bg-[#E30613] hover:bg-[#B8050F] text-white py-3 text-sm font-semibold"
-          >
-            <ShoppingCart className="h-4 w-4 mr-1" />
-            Panier ({getItemCount()})
-          </Button>
+        <div className="w-full">
           <Button 
             onClick={handlePhoneCall} 
-            className="bg-[#E30613] hover:bg-[#B8050F] text-white py-3 text-sm font-semibold"
+            className="w-full bg-[#E30613] hover:bg-[#B8050F] text-white py-3 text-sm font-semibold"
           >
             <Phone className="h-4 w-4 mr-1" />
             Appeler
