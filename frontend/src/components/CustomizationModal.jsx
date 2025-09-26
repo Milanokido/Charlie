@@ -133,15 +133,28 @@ const CustomizationModal = ({ isOpen, onClose, item, category, onAddToCart }) =>
     const parts = [];
     
     if (selectedMeats.length > 0) {
-      const meatText = selectedMeats.length > 1 
-        ? `${selectedMeats[0]}, ${selectedMeats.slice(1).join(', ')} (+${selectedMeats.length - 1} €)`
-        : selectedMeats[0];
-      parts.push(`Viandes: ${meatText}`);
+      if (isBowls) {
+        // For Bowls: first meat included, extras +1€
+        const meatText = selectedMeats.length > 1 
+          ? `${selectedMeats[0]}, ${selectedMeats.slice(1).join(', ')} (+${selectedMeats.length - 1} €)`
+          : selectedMeats[0];
+        parts.push(`Viandes: ${meatText}`);
+      } else {
+        // For Tacos: second meat onwards +1€
+        const meatText = selectedMeats.length > 1 
+          ? `${selectedMeats[0]}, ${selectedMeats.slice(1).join(', ')} (+${selectedMeats.length - 1} €)`
+          : selectedMeats[0];
+        parts.push(`Viandes: ${meatText}`);
+      }
     }
 
     if (selectedCheeses.length > 0) {
       const cheeseText = selectedCheeses.map(c => `${c} (+1 €)`).join(', ');
       parts.push(`Supplément: ${cheeseText}`);
+    }
+
+    if (isBowls) {
+      parts.push('Sauce fromagère incluse');
     }
 
     if (selectedBacon) {
@@ -154,6 +167,10 @@ const CustomizationModal = ({ isOpen, onClose, item, category, onAddToCart }) =>
 
     if (selectedSauces.length > 0) {
       parts.push(`Sauces: ${selectedSauces.join(', ')}`);
+    }
+
+    if (isBowls) {
+      parts.push('Boisson incluse');
     }
 
     return parts.join(' • ');
