@@ -332,3 +332,53 @@ button:focus, input:focus {
 .interactive:hover {
   transform: scale(1.02);
 }
+
+/* Floating Cart Button Animations */
+@keyframes bounce-in {
+  0% { 
+    transform: scale(0.3); 
+    opacity: 0; 
+  }
+  50% { 
+    transform: scale(1.05); 
+  }
+  70% { 
+    transform: scale(0.9); 
+  }
+  100% { 
+    transform: scale(1); 
+    opacity: 1; 
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  80%, 100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+.cart-button-enter {
+  animation: bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.cart-pulse-ring {
+  animation: pulse-ring 0.6s ease-out;
+}
+
+/* Ensure floating button is above other elements */
+.floating-cart-button {
+  z-index: 9999 !important;
+}
+
+/* Safe area handling for mobile devices */
+@supports (padding: max(0px)) {
+  .floating-cart-button {
+    bottom: max(1rem, env(safe-area-inset-bottom));
+    right: max(1rem, env(safe-area-inset-right));
+  }
+}
