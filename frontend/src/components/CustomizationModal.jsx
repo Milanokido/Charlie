@@ -60,6 +60,11 @@ const CustomizationModal = ({ isOpen, onClose, item, category, onAddToCart }) =>
     // Cheese supplements (+1€ each)
     extraCost += selectedCheeses.length;
 
+    // Bacon supplement for Frites (+1€)
+    if (selectedBacon) {
+      extraCost += 1;
+    }
+
     return (basePrice + extraCost) * quantity;
   };
 
