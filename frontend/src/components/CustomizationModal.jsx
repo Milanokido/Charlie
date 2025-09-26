@@ -170,6 +170,8 @@ const CustomizationModal = ({ isOpen, onClose, item, category, onAddToCart }) =>
         meats: selectedMeats,
         cheeses: selectedCheeses,
         sauces: selectedSauces,
+        bacon: selectedBacon,
+        boxOption: selectedBoxOption,
         optionsText: optionsText
       }
     };
