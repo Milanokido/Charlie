@@ -230,7 +230,7 @@ const CustomizationModal = ({ isOpen, onClose, item, category, onAddToCart }) =>
                   <h4 className="font-medium text-gray-900 mb-3">
                     Choix des viandes * 
                     <span className="text-sm font-normal text-gray-600">
-                      (Deuxième viande +1€)
+                      (Maximum 3 viandes • Viandes supplémentaires +1€ chacune)
                     </span>
                   </h4>
                   <div className="space-y-2">
@@ -242,7 +242,12 @@ const CustomizationModal = ({ isOpen, onClose, item, category, onAddToCart }) =>
                           selectedMeats.includes(meat)
                             ? 'border-[#E30613] bg-[#E30613] text-white'
                             : 'border-gray-300 hover:border-[#E30613] text-gray-900'
+                        } ${
+                          selectedMeats.length >= 3 && !selectedMeats.includes(meat)
+                            ? 'opacity-50 cursor-not-allowed'
+                            : ''
                         }`}
+                        disabled={selectedMeats.length >= 3 && !selectedMeats.includes(meat)}
                       >
                         <div className="flex justify-between items-center">
                           <span>{meat}</span>
@@ -256,6 +261,9 @@ const CustomizationModal = ({ isOpen, onClose, item, category, onAddToCart }) =>
                   {selectedMeats.length === 0 && (
                     <p className="text-red-600 text-sm mt-2">Veuillez sélectionner au moins une viande</p>
                   )}
+                  <p className="text-xs text-gray-600 mt-2">
+                    {selectedMeats.length}/3 viandes sélectionnées
+                  </p>
                 </div>
               )}
 
