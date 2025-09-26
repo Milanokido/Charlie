@@ -174,6 +174,17 @@ export const mockData = {
       ]
     },
     {
+      name: "🥣 Bowls",
+      description: "Servi avec boisson",
+      items: [
+        {
+          name: "Bowl",
+          price: "9,90 €",
+          description: "Base: 1 viande au choix + sauce fromagère + 2 sauces au choix + 1 boisson"
+        }
+      ]
+    },
+    {
       name: "👶 Menu Enfant",
       items: [
         {
