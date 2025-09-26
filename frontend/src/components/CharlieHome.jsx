@@ -5,7 +5,6 @@ import { Badge } from './ui/badge';
 import { Phone, MapPin, Clock, Star, Menu as MenuIcon, X, Plus, Minus } from 'lucide-react';
 import { mockData } from '../data/mock';
 import { useCart } from './CartContext';
-import CartModal from './CartModal';
 import CustomizationModal from './CustomizationModal';
 
 const CharlieHome = () => {
