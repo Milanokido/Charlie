@@ -296,7 +296,57 @@ const CustomizationModal = ({ isOpen, onClose, item, category, onAddToCart }) =>
                 </div>
               )}
 
+              {/* Bacon Supplement for Frites */}
+              {isFrites && (
+                <div>
+                  <h4 className="font-medium text-gray-900 mb-3">
+                    Supplément Bacon
+                    <span className="text-sm font-normal text-gray-600">
+                      (+1€)
+                    </span>
+                  </h4>
+                  <label className="flex items-center p-3 border rounded-lg hover:border-[#E30613] cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={selectedBacon}
+                      onChange={() => setSelectedBacon(!selectedBacon)}
+                      className="mr-3 h-4 w-4 text-[#E30613] focus:ring-[#E30613] border-gray-300 rounded"
+                    />
+                    <span className="text-gray-900">Bacon</span>
+                    <span className="ml-auto text-sm text-gray-600">+1€</span>
+                  </label>
+                </div>
+              )}
+
+              {/* Box Choice for Tex-Mex */}
+              {isTexMex && (
+                <div>
+                  <h4 className="font-medium text-gray-900 mb-3">
+                    Choix de votre Box *
+                  </h4>
+                  <div className="space-y-2">
+                    {['20 Tenders', '30 Wings'].map((option) => (
+                      <button
+                        key={option}
+                        onClick={() => setSelectedBoxOption(option)}
+                        className={`w-full p-3 text-left border rounded-lg transition-colors ${
+                          selectedBoxOption === option
+                            ? 'border-[#E30613] bg-[#E30613] text-white'
+                            : 'border-gray-300 hover:border-[#E30613] text-gray-900'
+                        }`}
+                      >
+                        {option}
+                      </button>
+                    ))}
+                  </div>
+                  {!selectedBoxOption && (
+                    <p className="text-red-600 text-sm mt-2">Veuillez sélectionner une option de box</p>
+                  )}
+                </div>
+              )}
+
               {/* Sauce Selection */}
+              {(isTacos || isSandwich) && (
               <div>
                 <h4 className="font-medium text-gray-900 mb-3">
                   Choix des sauces
