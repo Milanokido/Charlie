@@ -175,7 +175,7 @@ const CartModal = ({ isOpen, onClose }) => {
 
       // Use form-urlencoded to avoid CORS issues with Google Apps Script
       console.log('📡 Attempting form-urlencoded POST (CORS-safe)...');
-      const response = await fetch('https://script.google.com/macros/s/AKfycby_29hihc8W__dXRn7iclaud0Jk9D1-JwT4NHdJ18nKcbOU5l1Uf27hYXNsKRATP2pD/exec', {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbzQjUSqw6MD9CUyPcpidnR43oAa9zarwO2AMVA829srp164Qu90VQaxmS3qXPDJtdC-/exec', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
