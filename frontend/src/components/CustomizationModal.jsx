@@ -190,6 +190,8 @@ const CustomizationModal = ({ isOpen, onClose, item, category, onAddToCart }) =>
     setSelectedMeats([]);
     setSelectedCheeses([]);
     setSelectedSauces([]);
+    setSelectedBacon(false);
+    setSelectedBoxOption('');
     setQuantity(1);
   };
 
