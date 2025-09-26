@@ -505,9 +505,16 @@ const CartModal = ({ isOpen, onClose }) => {
               <div className="bg-gray-50 border border-gray-200 p-4 rounded-lg">
                 <h4 className="font-medium text-gray-900 mb-3">Récapitulatif de votre commande</h4>
                 {items.map((item, index) => (
-                  <div key={index} className="flex justify-between text-sm mb-1 text-gray-900">
-                    <span>{item.quantity}x {item.name}</span>
-                    <span className="font-medium">{(parsePrice(item.price) * item.quantity).toFixed(2)}€</span>
+                  <div key={index} className="text-sm mb-1 text-gray-900">
+                    <div className="flex justify-between">
+                      <span>{item.quantity}x {item.name}</span>
+                      <span className="font-medium">{(parsePrice(item.price) * item.quantity).toFixed(2)}€</span>
+                    </div>
+                    {item.options?.optionsText && (
+                      <div className="text-xs text-blue-700 ml-4">
+                        [{item.options.optionsText}]
+                      </div>
+                    )}
                   </div>
                 ))}
                 <hr className="my-2 border-gray-400" />
