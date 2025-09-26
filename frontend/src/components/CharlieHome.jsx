@@ -6,6 +6,7 @@ import { Phone, MapPin, Clock, Star, Menu as MenuIcon, X, ShoppingCart, Plus, Mi
 import { mockData } from '../data/mock';
 import { useCart } from './CartContext';
 import CartModal from './CartModal';
+import CustomizationModal from './CustomizationModal';
 
 const CharlieHome = () => {
   const [lightboxImage, setLightboxImage] = useState(null);
