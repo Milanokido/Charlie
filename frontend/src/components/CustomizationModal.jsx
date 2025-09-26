@@ -12,7 +12,9 @@ const CustomizationModal = ({ isOpen, onClose, item, category, onAddToCart }) =>
 
   const isTacos = category?.name?.includes('Tacos');
   const isSandwich = category?.name?.includes('Sandwichs Baguette');
-  const needsCustomization = isTacos || isSandwich;
+  const isFrites = category?.name?.includes('Frites');
+  const isTexMex = category?.name?.includes('Tex Mex') && item?.name?.includes('Box');
+  const needsCustomization = isTacos || isSandwich || isFrites || isTexMex;
 
   // Available options
   const availableMeats = [
