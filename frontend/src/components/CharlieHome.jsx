@@ -44,14 +44,31 @@ const CharlieHome = () => {
   };
 
   const handleAddToCart = (item, categoryName) => {
-    const cartItem = {
-      id: `${categoryName}-${item.name}`.replace(/\s+/g, '-').toLowerCase(),
-      name: item.name,
-      price: item.price,
-      description: item.description,
-      category: categoryName
-    };
-    addItem(cartItem);
+    const category = mockData.menuCategories.find(cat => cat.name === categoryName);
+    
+    // Check if item needs customization (Tacos or Sandwiches)
+    const needsCustomization = (categoryName.includes('Tacos') || categoryName.includes('Sandwichs Baguette')) 
+      && !item.name.toLowerCase().includes('supplément');
+    
+    if (needsCustomization) {
+      setSelectedItem(item);
+      setSelectedCategory(category);
+      setCustomizationModalOpen(true);
+    } else {
+      // Regular add to cart for non-customizable items
+      const cartItem = {
+        id: `${categoryName}-${item.name}`.replace(/\s+/g, '-').toLowerCase(),
+        name: item.name,
+        price: item.price,
+        description: item.description,
+        category: categoryName
+      };
+      addItem(cartItem);
+    }
+  };
+
+  const handleCustomizedAddToCart = (customizedItem) => {
+    addItem(customizedItem);
   };
 
   const handleRemoveFromCart = (item, categoryName) => {
