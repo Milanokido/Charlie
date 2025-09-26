@@ -12,7 +12,6 @@ const CharlieHome = () => {
   const [lightboxImage, setLightboxImage] = useState(null);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [cartModalOpen, setCartModalOpen] = useState(false);
   const [customizationModalOpen, setCustomizationModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
