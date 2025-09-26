@@ -382,3 +382,23 @@ button:focus, input:focus {
     right: max(1rem, env(safe-area-inset-right));
   }
 }
+
+/* Hide Emergent preview message */
+div[style*="position: fixed"][style*="bottom"] {
+  display: none !important;
+}
+
+/* Hide preview banner with text content */
+div:has(*:contains("frontend only preview")),
+div:has(*:contains("Spinning up Servers")),
+div:has(*:contains("Please explore the app")),
+div:has(*:contains("made with emergent")) {
+  display: none !important;
+}
+
+/* Alternative approach using text content */
+*:contains("This is the frontend only preview"),
+*:contains("made with emergent"),
+*:contains("Minimize") {
+  display: none !important;
+}
