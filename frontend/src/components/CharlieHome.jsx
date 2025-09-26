@@ -48,11 +48,12 @@ const CharlieHome = () => {
     
     const category = mockData.menuCategories.find(cat => cat.name === categoryName);
     
-    // Check if item needs customization (Tacos, Sandwiches, Frites, or Tex-Mex Box)
+    // Check if item needs customization (Tacos, Sandwiches, Frites, Bowls, or Tex-Mex Box)
     const needsCustomization = (
       (categoryName.includes('Tacos') && !item.name.toLowerCase().includes('supplément')) ||
       (categoryName.includes('Sandwichs Baguette') && !item.name.toLowerCase().includes('supplément')) ||
       (categoryName.includes('Frites')) ||
+      (categoryName.includes('Bowls')) ||
       (categoryName.includes('Tex Mex') && item.name.includes('Box'))
     );
     
