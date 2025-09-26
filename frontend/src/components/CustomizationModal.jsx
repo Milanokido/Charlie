@@ -126,12 +126,20 @@ const CustomizationModal = ({ isOpen, onClose, item, category, onAddToCart }) =>
       const meatText = selectedMeats.length > 1 
         ? `${selectedMeats[0]}, ${selectedMeats.slice(1).join(', ')} (+${selectedMeats.length - 1} €)`
         : selectedMeats[0];
-      parts.push(`Viande: ${meatText}`);
+      parts.push(`Viandes: ${meatText}`);
     }
 
     if (selectedCheeses.length > 0) {
       const cheeseText = selectedCheeses.map(c => `${c} (+1 €)`).join(', ');
       parts.push(`Supplément: ${cheeseText}`);
+    }
+
+    if (selectedBacon) {
+      parts.push('Supplément: Bacon (+1 €)');
+    }
+
+    if (selectedBoxOption) {
+      parts.push(`Option: ${selectedBoxOption}`);
     }
 
     if (selectedSauces.length > 0) {
