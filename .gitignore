@@ -81,3 +81,7 @@ android-sdk/ charlie2.tar.gz
 charlie2.tar.gz
 Charlie_Final.tar.zip
 charlo.zip
+-e 
+# Environment files
+*.env
+*.env.*
