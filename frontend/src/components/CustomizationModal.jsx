@@ -507,7 +507,7 @@ const CustomizationModal = ({ isOpen, onClose, item, category, onAddToCart }) =>
             <Button
               variant="outline"
               onClick={handleClose}
-              className="flex-1"
+              className="flex-1 border-gray-400 text-gray-900 bg-white hover:bg-gray-100 hover:text-gray-900"
             >
               Annuler
             </Button>
