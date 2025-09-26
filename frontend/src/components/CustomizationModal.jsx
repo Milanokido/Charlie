@@ -152,7 +152,13 @@ const CustomizationModal = ({ isOpen, onClose, item, category, onAddToCart }) =>
   // Handle add to cart
   const handleAddToCart = () => {
     if (!isValidSelection()) {
-      alert(isTacos ? 'Veuillez sélectionner au moins une viande' : 'Sélection non valide');
+      if (isTacos) {
+        alert('Veuillez sélectionner au moins une viande');
+      } else if (isTexMex) {
+        alert('Veuillez sélectionner une option de box');
+      } else {
+        alert('Sélection non valide');
+      }
       return;
     }
 
