@@ -205,6 +205,8 @@ const CustomizationModal = ({ isOpen, onClose, item, category, onAddToCart }) =>
         sauces: selectedSauces,
         bacon: selectedBacon,
         boxOption: selectedBoxOption,
+        sauce_fromagere: isBowls ? "incluse" : undefined,
+        boisson: isBowls ? "incluse" : undefined,
         optionsText: optionsText
       }
     };
