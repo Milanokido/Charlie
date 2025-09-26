@@ -425,7 +425,7 @@ const CustomizationModal = ({ isOpen, onClose, item, category, onAddToCart }) =>
               )}
 
               {/* Sauce Selection */}
-              {(isTacos || isSandwich) && (
+              {(isTacos || isSandwich || isBowls) && (
                 <div>
                   <h4 className="font-medium text-gray-900 mb-3">
                     Choix des sauces
