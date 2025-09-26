@@ -19,7 +19,13 @@ const CustomizationModal = ({ isOpen, onClose, item, category, onAddToCart }) =>
   const isTexMex = category?.name?.includes('Tex Mex') && item?.name?.includes('Box');
   const needsCustomization = isTacos || isSandwich || isFrites || isBowls || isTexMex;
 
-  // Available options
+  // Available options for Bowls
+  const bowlMeats = [
+    'Kebab',
+    'Escalope', 
+    'Tenders',
+    'Cordon bleu'
+  ];
   const availableMeats = [
     'Kebab',
     'Escalope',
