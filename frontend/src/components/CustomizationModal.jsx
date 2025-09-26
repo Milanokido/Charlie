@@ -6,6 +6,8 @@ const CustomizationModal = ({ isOpen, onClose, item, category, onAddToCart }) =>
   const [selectedMeats, setSelectedMeats] = useState([]);
   const [selectedCheeses, setSelectedCheeses] = useState([]);
   const [selectedSauces, setSelectedSauces] = useState([]);
+  const [selectedBacon, setSelectedBacon] = useState(false);
+  const [selectedBoxOption, setSelectedBoxOption] = useState('');
   const [quantity, setQuantity] = useState(1);
 
   if (!isOpen || !item) return null;
