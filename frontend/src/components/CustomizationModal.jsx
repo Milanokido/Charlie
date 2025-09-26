@@ -343,7 +343,7 @@ const CustomizationModal = ({ isOpen, onClose, item, category, onAddToCart }) =>
               >
                 <Minus className="h-4 w-4" />
               </button>
-              <span className="w-12 text-center font-bold text-lg">{quantity}</span>
+              <span className="w-12 text-center font-bold text-lg text-gray-900 bg-white border border-gray-300 rounded px-2 py-1">{quantity}</span>
               <button
                 onClick={() => setQuantity(quantity + 1)}
                 className="p-2 rounded-full bg-gray-200 hover:bg-gray-300 text-gray-800"
