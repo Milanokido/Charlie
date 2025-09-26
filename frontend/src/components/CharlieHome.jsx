@@ -44,18 +44,24 @@ const CharlieHome = () => {
   };
 
   const handleAddToCart = (item, categoryName) => {
+    console.log('Adding to cart:', { item: item.name, category: categoryName });
+    
     const category = mockData.menuCategories.find(cat => cat.name === categoryName);
     
     // Check if item needs customization (Tacos or Sandwiches)
     const needsCustomization = (categoryName.includes('Tacos') || categoryName.includes('Sandwichs Baguette')) 
       && !item.name.toLowerCase().includes('supplément');
     
+    console.log('Needs customization:', needsCustomization, 'Category includes Tacos:', categoryName.includes('Tacos'));
+    
     if (needsCustomization) {
+      console.log('Opening customization modal for:', item.name);
       setSelectedItem(item);
       setSelectedCategory(category);
       setCustomizationModalOpen(true);
     } else {
       // Regular add to cart for non-customizable items
+      console.log('Adding regular item to cart:', item.name);
       const cartItem = {
         id: `${categoryName}-${item.name}`.replace(/\s+/g, '-').toLowerCase(),
         name: item.name,
