@@ -587,6 +587,15 @@ const CharlieHome = () => {
         onClose={() => setCartModalOpen(false)} 
       />
 
+      {/* Customization Modal */}
+      <CustomizationModal
+        isOpen={customizationModalOpen}
+        onClose={() => setCustomizationModalOpen(false)}
+        item={selectedItem}
+        category={selectedCategory}
+        onAddToCart={handleCustomizedAddToCart}
+      />
+
       {/* Lightbox */}
       {lightboxImage && (
         <div 
