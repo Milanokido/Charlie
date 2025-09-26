@@ -312,6 +312,11 @@ const CartModal = ({ isOpen, onClose }) => {
                       {item.description && (
                         <p className="text-sm text-gray-600 mt-1">{item.description}</p>
                       )}
+                      {item.options?.optionsText && (
+                        <p className="text-xs text-blue-700 mt-1 font-medium">
+                          [{item.options.optionsText}]
+                        </p>
+                      )}
                       <p className="text-[#E30613] font-bold">{item.price}</p>
                     </div>
                     
