@@ -179,7 +179,7 @@ export const mockData = {
       items: [
         {
           name: "Bowl",
-          price: "9,90 €",
+          price: "9,50 €",
           description: "Base: 1 viande au choix + sauce fromagère + 2 sauces au choix + 1 boisson"
         }
       ]
