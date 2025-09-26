@@ -574,12 +574,6 @@ const CharlieHome = () => {
         </div>
       </div>
 
-      {/* Cart Modal */}
-      <CartModal 
-        isOpen={cartModalOpen} 
-        onClose={() => setCartModalOpen(false)} 
-      />
-
       {/* Customization Modal */}
       <CustomizationModal
         isOpen={customizationModalOpen}
