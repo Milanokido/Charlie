@@ -181,6 +181,8 @@ const CustomizationModal = ({ isOpen, onClose, item, category, onAddToCart }) =>
     if (!isValidSelection()) {
       if (isTacos) {
         alert('Veuillez sélectionner au moins une viande');
+      } else if (isBowls) {
+        alert('Veuillez sélectionner au moins une viande');
       } else if (isTexMex) {
         alert('Veuillez sélectionner une option de box');
       } else {
