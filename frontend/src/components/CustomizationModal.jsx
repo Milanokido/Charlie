@@ -61,13 +61,16 @@ const CustomizationModal = ({ isOpen, onClose, item, category, onAddToCart }) =>
     return (basePrice + extraCost) * quantity;
   };
 
-  // Handle meat selection
+  // Handle meat selection (max 3 for Tacos)
   const handleMeatToggle = (meat) => {
     setSelectedMeats(prev => {
       if (prev.includes(meat)) {
         return prev.filter(m => m !== meat);
-      } else {
+      } else if (prev.length < 3) {
         return [...prev, meat];
+      } else {
+        // Replace first meat if at max (3)
+        return [prev[1], prev[2], meat];
       }
     });
   };
