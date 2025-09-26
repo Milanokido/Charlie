@@ -347,39 +347,40 @@ const CustomizationModal = ({ isOpen, onClose, item, category, onAddToCart }) =>
 
               {/* Sauce Selection */}
               {(isTacos || isSandwich) && (
-              <div>
-                <h4 className="font-medium text-gray-900 mb-3">
-                  Choix des sauces
-                  <span className="text-sm font-normal text-gray-600">
-                    (Maximum 2 sauces • {selectedSauces.length}/2)
-                  </span>
-                </h4>
-                <div className="grid grid-cols-2 gap-2">
-                  {availableSauces.map((sauce) => (
-                    <label
-                      key={sauce}
-                      className={`flex items-center p-2 border rounded-lg cursor-pointer transition-colors ${
-                        selectedSauces.includes(sauce)
-                          ? 'border-[#E30613] bg-[#E30613] text-white'
-                          : 'border-gray-300 hover:border-[#E30613] text-gray-900'
-                      } ${
-                        selectedSauces.length >= 2 && !selectedSauces.includes(sauce)
-                          ? 'opacity-50 cursor-not-allowed'
-                          : ''
-                      }`}
-                    >
-                      <input
-                        type="checkbox"
-                        checked={selectedSauces.includes(sauce)}
-                        onChange={() => handleSauceToggle(sauce)}
-                        disabled={selectedSauces.length >= 2 && !selectedSauces.includes(sauce)}
-                        className="sr-only"
-                      />
-                      <span className="text-sm">{sauce}</span>
-                    </label>
-                  ))}
+                <div>
+                  <h4 className="font-medium text-gray-900 mb-3">
+                    Choix des sauces
+                    <span className="text-sm font-normal text-gray-600">
+                      (Maximum 2 sauces • {selectedSauces.length}/2)
+                    </span>
+                  </h4>
+                  <div className="grid grid-cols-2 gap-2">
+                    {availableSauces.map((sauce) => (
+                      <label
+                        key={sauce}
+                        className={`flex items-center p-2 border rounded-lg cursor-pointer transition-colors ${
+                          selectedSauces.includes(sauce)
+                            ? 'border-[#E30613] bg-[#E30613] text-white'
+                            : 'border-gray-300 hover:border-[#E30613] text-gray-900'
+                        } ${
+                          selectedSauces.length >= 2 && !selectedSauces.includes(sauce)
+                            ? 'opacity-50 cursor-not-allowed'
+                            : ''
+                        }`}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={selectedSauces.includes(sauce)}
+                          onChange={() => handleSauceToggle(sauce)}
+                          disabled={selectedSauces.length >= 2 && !selectedSauces.includes(sauce)}
+                          className="sr-only"
+                        />
+                        <span className="text-sm">{sauce}</span>
+                      </label>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* Options Summary */}
               {formatOptionsText() && (
