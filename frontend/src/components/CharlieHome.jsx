@@ -167,17 +167,6 @@ const CharlieHome = () => {
           
           {/* Desktop Commander Button */}
           <div className="hidden md:flex items-center space-x-4">
-            <button
-              onClick={() => setCartModalOpen(true)}
-              className="relative p-2 text-white hover:text-[#E30613] transition-colors"
-            >
-              <ShoppingCart className="h-6 w-6" />
-              {getItemCount() > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[#E30613] text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                  {getItemCount()}
-                </span>
-              )}
-            </button>
             <Button 
               onClick={handlePhoneCall} 
               className="bg-[#E30613] hover:bg-[#B8050F] text-white border-[#E30613] font-semibold"
